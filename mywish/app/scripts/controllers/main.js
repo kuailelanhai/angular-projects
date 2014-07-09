@@ -1,17 +1,13 @@
 'use strict';
-
-/**
- * @ngdoc function
- * @name mywishApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the mywishApp
- */
 angular.module('mywishApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope,$location) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+        $scope.register="登录";
+        $scope.go_register=function(){
+            $location.path('/creat_active')
+        }
+    });

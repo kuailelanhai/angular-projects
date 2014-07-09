@@ -1,13 +1,4 @@
 'use strict';
-
-/**
- * @ngdoc overview
- * @name mywishApp
- * @description
- * # mywishApp
- *
- * Main module of the application.
- */
 angular
   .module('mywishApp', [
     'ngAnimate',
@@ -27,6 +18,19 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+        .when('/creat_active',{
+            templateUrl:'views/creat_active.html',
+            controller:'CreatActiveCtrl'
+        }
+      )
+        .when('/active_listbox',{
+            templateUrl:'views/active_listbox.html',
+               controller:'Active_listboxCtrl'
+        })
+        .when('/creat_active_with',{
+            templateUrl:'views/creat_active_with.html',
+            controller:'Creat_active_withCtrl'
+        })
       .otherwise({
         redirectTo: '/'
       });
