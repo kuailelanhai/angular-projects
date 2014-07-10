@@ -1,9 +1,42 @@
-<h1>活动列表</h1>
+
 <header>
     活动列表
-<div class="header-right">
-    <button class="btn-style btn-4" ng-click="go_creat()">创建活动</button>
+<!--<div class="header-right">-->
+    <!--<button class="btn-style btn-4" ng-click="go_creat()">创建活动</button>-->
 
-</div>
-
+<!--</div>-->
+    <div class="header-right">
+        <a class="btn-style btn-4"  ng-click="go_creat()">创建活动</a>
+    </div>
 </header>
+
+
+<!--<html>-->
+<!--<body>-->
+<!--<div id="qbox"></div>-->
+<!--<script type="text/javascript">-->
+    <!--function getArgs() {-->
+        <!--var args = {};-->
+        <!--var query = location.search.substring(1);-->
+        <!--// Get query string-->
+        <!--var pairs = query.split("&");-->
+        <!--// Break at ampersand-->
+        <!--for(var i = 0; i < pairs.length; i++) {-->
+            <!--var pos = pairs[i].indexOf('=');-->
+            <!--// Look for "name=value"-->
+            <!--if (pos == -1) continue;-->
+            <!--// If not found, skip-->
+            <!--var argname = pairs[i].substring(0,pos);// Extract the name-->
+            <!--var value = pairs[i].substring(pos+1);// Extract the value-->
+            <!--value = decodeURIComponent(value);// Decode it, if needed-->
+            <!--args[argname] = value;-->
+            <!--// Store as a property-->
+        <!--}-->
+        <!--return args;// Return the object-->
+    <!--}-->
+    <!--var str =getArgs();-->
+    <!--alert(str['q']);//和input的name对应取值,-->
+    <!--document.getElementById("qbox").innerHTML = str['q'];//然后赋值给DIV-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

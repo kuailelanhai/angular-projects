@@ -31,6 +31,10 @@ angular
             templateUrl:'views/creat_active_with.html',
             controller:'Creat_active_withCtrl'
         })
+        .when('/creat_active_return',{
+            templateUrl:'views/active_listbox.html',
+            controller:'Creat_active_returnCtrl'
+        })
       .otherwise({
         redirectTo: '/'
       });

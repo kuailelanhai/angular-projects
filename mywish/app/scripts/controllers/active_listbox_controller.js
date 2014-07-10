@@ -13,3 +13,5 @@ angular.module('mywishApp')
         }
 
     });
+
+var messages=JSON.parse(localStorage.getItem('messages')) || [];
