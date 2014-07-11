@@ -20,35 +20,42 @@ angular.module('mywishApp')
 //localStorage.setItem("message",JSON.stringify(messages));
  function create (){
 
-
-    var message={'name':$scope.activity,'activity_status':'false','apply_list':[],'bid_status':'false'};
+    var message={'name':$scope.activity};
     var messages=JSON.parse(localStorage.getItem("messages")) || [];
      console.log(message)
+    var if_same
+    var file;
+    for(file in messages) {
 
-
-    var if_mark
-    var recyle;
-
-    for(recyle in messages) {
-
-        if ($scope.activity == messages[recyle].name) {
-            $scope.hide=1
-            if_mark=true
+        if ($scope.activity == messages[file].name) {
+//            $scope.hide=1
+            if_same=true
             break;
         }
     }
-     console.log(if_mark)
-    if(!if_mark) {
-
+     console.log(if_same)
+    if(!if_same) {
         messages.unshift(message);
         localStorage.setItem("messages",JSON.stringify(messages))
         var messages = JSON.parse(localStorage.getItem('messages'))
-        localStorage.current_activity=messages[0].name
+//        localStorage.current_activity=messages[0].name
 //        $location.path('bidding')
         $location.path('/creat_active')
     }
 
 }
-$scope.show=localStorage.getItem("messages")
+
+        $scope.show=localStorage.getItem("messages")
+
+//for(file in messages){
+//    if($scope.apt==message){
+//        file.show=true
+//        break
+//    }
+//    else
+//    {
+//        file.show=false
+//    }
+//}
 
 });
