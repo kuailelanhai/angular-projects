@@ -25,7 +25,7 @@ angular.module('mywishApp')
            alert("sss")
         function a(){
             $scope.list1=JSON.parse(localStorage.getItem("messages"));
-
+            console.log($scope.list1);
 //            console.log($scope.list)
         }
             a();
