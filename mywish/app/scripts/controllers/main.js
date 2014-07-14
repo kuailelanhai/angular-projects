@@ -10,6 +10,7 @@ angular.module('mywishApp')
         $scope.go_register=function(){
 
             creat()
+
 //
         }
 
@@ -43,9 +44,45 @@ angular.module('mywishApp')
         $location.path('/creat_active')
     }
 
-}
+}        $scope.show=localStorage.getItem("messages")
 
-        $scope.show=localStorage.getItem("messages")
+//        function show_status($scope,messages)
+//        {
+//            $scope.affirm=true;
+//            if($scope.activity.length==0)
+//            {
+//                $scope.affirm=true;
+//            }
+//            else if($scope.activity == messages[file].actname)
+//            {
+//                $scope.affirm=true;
+//            }
+//        else
+//        $scope.affirm=false;
+//    }
+
+//        $scope.show=localStorage.getItem("messages")
+//
+//        function show_status($scope,messages)
+//        {
+//            $scope.affirm=false;
+//        if($scope.activity.length==0)
+//        {
+//            $scope.affirm=false;
+//        }
+//            else if
+//        {
+//
+//            for(var i=0;i<messages.length;i++)
+//            if($scope.activity == messages[file].actname)
+//            {
+//                $scope.disabled=false;
+//            }
+//        }
+//        else
+//        $scope.affirm=true;
+//        }
+
 
 //for(file in messages){
 //    if($scope.apt==message){
