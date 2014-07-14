@@ -6,10 +6,8 @@ angular.module('mywishApp')
             'AngularJS',
             'Karma'
         ];
-        alert("sss")
         $scope.creat="创建活动";
         $scope.go_creat=function(){
-            console.log("?????")
             $location.path('/creat_active_with')
         }
 //        $scope.main = function () {
@@ -21,8 +19,6 @@ angular.module('mywishApp')
 //            $location.path('main')
 //        }
 //        var apply = JSON.parse(localStorage.getItem('messages'))
-
-           alert("sss")
         function a(){
             $scope.list1=JSON.parse(localStorage.getItem("messages"));
             console.log($scope.list1);

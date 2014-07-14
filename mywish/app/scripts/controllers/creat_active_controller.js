@@ -8,7 +8,6 @@ angular.module('mywishApp')
         ];
         $scope.return="返回";
         $scope.go_return=function(){
-            alert("sss")
             $location.path('/active_listbox')
         }
     });

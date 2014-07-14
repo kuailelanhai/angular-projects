@@ -15,9 +15,14 @@
             <!--<input type="text" class="input-full" ng-model="active" ng-change="IsUseStr()">-->
             <!--<button class="btn-style btn-4"  ng-click= "go_register()" ng-disabled="!active">创建</button>-->
 
-<header>创建活动<div class="header-left">
+<header>创建活动
+    <div>
+        <div class="header-left">
+            <a class="btn-style btn-4" ng-click="go_creat_return()"><div ng-show='show'>返回</div></a>
+        </div>
+    </div>
 
-</div></header>
+</header>
 <div class="wrapper scrollable" id="wrapper">
 
 
@@ -28,10 +33,5 @@
       <p></p>
         <div style="color:#ff0000" ng-show="show1" class="logo-flat">活动名重复</div>
         <button ng-click="go_register()" ng-disabled="!activity"  class="btn btn-primary btn-lg btn-block" >创建</button></form></div>
-</div>
-<div>
-    <div class="header-right">
-        <a class="btn-style btn-4" ng-click="go_creat_return()"><div ng-show='show'>返回</div></a>
-    </div>
 </div>
 <!--<div style="color:#ff0000" ng-show="show1" class="logo-flat">活动名重复</div>-->
