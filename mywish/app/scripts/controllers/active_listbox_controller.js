@@ -8,8 +8,9 @@ angular.module('mywishApp')
         ];
         $scope.creat="创建活动";
         $scope.go_creat=function(){
-            $location.path('/creat_active_with')
+            $location.path('/main')
         }
+
 //        $scope.main = function () {
 //            $location.path('main')
 //        };
