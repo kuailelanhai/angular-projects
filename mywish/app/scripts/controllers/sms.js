@@ -19,8 +19,12 @@ var native_accessor = {
         for(var i in exercises)
         {
            if(exercises[i].activity.status=true)
-           if(message.search(bm/i)==0)
+               var message = json_message.messages[0].message.replace(/\s/g, "");
+           if(message.search(/bm|ｂｍ/i)==0)
            {
+               var my_name=message.substr[2].trim()
+               var my_phone=message.substr[0].trim()
+               var my_array={'myname':}
 
            }
         }

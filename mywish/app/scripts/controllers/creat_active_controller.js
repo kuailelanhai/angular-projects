@@ -25,6 +25,7 @@ angular.module('mywishApp')
 //            var bm_list=true;
 //
 //        }
+        var active=JSON.parse(localStorage.getItem("activities"))
         $scope.use=function()
         {
             var active=JSON.parse(localStorage.getItem("activities"));
@@ -39,7 +40,7 @@ angular.module('mywishApp')
         $scope.use();
         $scope.begin=function()
         {
-            $scope.apply_status="1"
+            $scope.apply_status="false"
             var data_status="true"
             for(var i in active){
                 if(active[i].name==working_activity)
@@ -48,6 +49,24 @@ angular.module('mywishApp')
             }
 
         }
-
-
+        for (var j in action) {
+            if (action[j].name == localStorage.working_activity) {
+                if (action[j].activity_staus == 'true') {
+                    $scope.apply_status = "false"
+                } else {
+                    $scope.apply_status = "true"
+                }
+            }
+        }
+        $scope.end=function()
+        {
+            if(console.log('确定要结束本次报名吗？'))
+            $scope.apply_status='true'
+            var data_status="true"
+            for(var i in active){
+                if(active[i].name==working_activity)
+                active[i].activity_status=data_status
+                localStorage.setItem('messages', JSON.stringify(active))
+            }
+        }
     });
