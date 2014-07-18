@@ -1,15 +1,22 @@
 'use strict';
 angular.module('mywishApp')
-    .controller('Active_listboxCtrl', function ($scope,$location) {
+    .controller('Active_listboxCtrl', function ($scope, $location) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
             'Karma'
         ];
-        $scope.creat="创建活动";
-        $scope.go_creat=function(){
+        $scope.creat = "创建活动";
+        $scope.go_creat = function () {
             $location.path('/main')
+
         }
+        $scope.bm = function (actname) {
+            $location.path('/creat_active')
+            localStorage.working_activity = actname;
+            //       console.log(localStorage.current_activity)
+        }
+
 
 //        $scope.main = function () {
 //            $location.path('main')
@@ -20,16 +27,11 @@ angular.module('mywishApp')
 //            $location.path('main')
 //        }
 //        var apply = JSON.parse(localStorage.getItem('messages'))
-        function a(){
-            $scope.list1=JSON.parse(localStorage.getItem("messages"));
+        function a() {
+            $scope.list1 = JSON.parse(localStorage.getItem("messages"))||[];
             console.log($scope.list1);
-//            console.log($scope.list)
         }
-            a();
-
-
-
-
+        a();
 
 
     });

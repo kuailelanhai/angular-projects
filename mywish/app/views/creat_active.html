@@ -15,31 +15,27 @@
 
 
    <header>
-      报名
-    <!--<div class="header-right header-right-pulldown">-->
-        <!--<button class="side-slide-trigger btn-style btn-4" ng-click="go_return()">开始</button>-->
-
-    <!--</div>-->
-    <!--<div class="header-left">-->
-        <!--<button class="btn-style btn-4" ng-click="go_return()">返回</button>-->
-   <!--</div>-->
-       <!--<div class="header-right">-->
-           <!--<a href="receiver-list.html" class="btn-style btn-4" ng-click="go_return()">开始</a>-->
-       <!--</div>-->
-       <!--<div class="header-left">-->
-           <!--<button class="btn-style btn-4" ng-click="go_return()">返回</button>-->
-       <!--</div>-->
+      报名({{people_number}})
+       <!--<ul class="footer-nav footer-nav-2tabs">-->
+       <!--<li><a href=""><i class="icon-group"></i><br />报名</a></li>-->
+           <!--</ul>-->
+       <input ng-model="creativity" class="input-full" />
        <div class="header-left">
            <a class="btn-style btn-4" ng-click="go_return()">返回</a>
        </div>
        <div class="header-right" ng-switch="switch">
-           <a class="btn-style btn-4" ng-click="begin()" ng-switch-when="start">开始</a>
-           <a class="btn-style btn-4" ng-click="end()" ng-switch-when="end">结束</a>
+           <a class="btn-style btn-4" ng-switch-when="start" ng-click="begin()" ng-disabled="disabled">开始</a>
+           <a class="btn-style btn-4" ng-switch-when="end" ng-click="end()" >结束</a>
+           <!--<button onclick="{ confirm('确认要结束此次报名吗？')location.href='http://localhost:9000/#/creat_active'}">获取现在的位置</button>-->
+           <!--<input type="button" value="go" onclick="if(confirm('确定跳转？')){location.href='http://localhost:9000/#/active_listbox'>-->
+           <!--&lt;!&ndash;<input type="button" name="btn" value="跳转" onclick="javascript:location.href='index.php'">&ndash;&gt;-->
+           <!--&lt;!&ndash;<input type="button" name="btn" value="返回" onclick="javascript:history.back(-1)">&ndash;&gt;-->
+
        </div>
    </header>
    <footer>
        <ul class="footer-nav footer-nav-2tabs">
-           <li><a href=""><i class="icon-group"></i><br />报名({{people_number}})</a></li>
+           <li><a href=""><i class="icon-group"></i><br />报名</a></li>
            <li class="active"><a href=""><i class="icon-comments"></i><br />竞价</a></li>
        </ul>
    </footer>
@@ -47,13 +43,12 @@
    <input ng-model="person" class="input-full" />
    <ul>
        <div id="wrapper" class="wrapper scrollable">
+           <div class="ng-scope" id="list_id"></div>
            <ul class="list-style-2">
                <li ng-repeat="phone in list2">
                    <h1>{{phone.act_name}}</h1>
-                   <!--<i class="icon-angle-right"></i>-->
+                   <h1>{{phone.act_phone}}</h1>
                </li>
            </ul>
        </div>
    </ul>
-
-
