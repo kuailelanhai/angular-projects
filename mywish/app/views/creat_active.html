@@ -15,7 +15,7 @@
 
 
    <header>
-      报名({{people_number}})
+      报名({{people_number}}人)
        <!--<ul class="footer-nav footer-nav-2tabs">-->
        <!--<li><a href=""><i class="icon-group"></i><br />报名</a></li>-->
            <!--</ul>-->
@@ -33,6 +33,21 @@
 
        </div>
    </header>
+
+   <body>
+   <input ng-model="person" class="input-full" />
+   <ul>
+       <div id="wrapper" class="wrapper scrollable">
+           <div class="ng-scope" id="list_id"></div>
+           <ul class="list-style-2">
+               <li ng-repeat="phone in list2">
+                   <h1>{{phone.name}}</h1>
+                   <h1>{{phone.phone}}</h1>
+               </li>
+           </ul>
+       </div>
+   </ul>
+   </body>
    <footer>
        <ul class="footer-nav footer-nav-2tabs">
            <li><a href=""><i class="icon-group"></i><br />报名</a></li>
@@ -40,15 +55,5 @@
        </ul>
    </footer>
 
-   <input ng-model="person" class="input-full" />
-   <ul>
-       <div id="wrapper" class="wrapper scrollable">
-           <div class="ng-scope" id="list_id"></div>
-           <ul class="list-style-2">
-               <li ng-repeat="phone in list2">
-                   <h1>{{phone.act_name}}</h1>
-                   <h1>{{phone.act_phone}}</h1>
-               </li>
-           </ul>
-       </div>
-   </ul>
+
+

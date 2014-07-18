@@ -22,7 +22,6 @@ var native_accessor = {
                 var message = json_message.messages[0].message.replace(/\s/g, "");
                 if (!message.search(/bm/i))
                 {
-//                    console.log('==============================')
                     var my_name = message.substr(2).trim()
                     var my_phone = json_message.messages[0].phone
 //                    console.log(my_phone)

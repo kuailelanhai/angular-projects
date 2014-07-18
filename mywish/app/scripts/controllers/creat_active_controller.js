@@ -26,26 +26,27 @@ angular.module('mywishApp')
 //
 //        }
         var active=JSON.parse(localStorage.getItem("messages"))
-        $scope.use=function()
-        {
+
             var active=JSON.parse(localStorage.getItem("messages"));
             for(var i in active)
             {
-                if(active[i].name==localStorage.working_activity){
-//                    $scope.applys=active[i].apply_list;
+                console.log('1')
+                if(active[i].actname==localStorage.working_activity){
+                console.log('122')
+                    $scope.applys=active[i].apply_list;
                     $scope.people_number=active[i].apply_list.length;
                     $scope.list2=active[i].apply_list;
-                    console.log("$scope.list2")
+                    console.log($scope.list2)
                 }
             }
-        }
-        $scope.use();
+
 
         $scope.begin=function()
         {
             $scope.switch="end"
             var data_status="true"
             for(var i in active){
+
                 if(active[i].name==localStorage.working_activity)
                 active[i].activity_status=data_status
                 localStorage.setItem('messages', JSON.stringify(active))
