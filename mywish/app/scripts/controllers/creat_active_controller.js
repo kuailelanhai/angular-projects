@@ -67,17 +67,17 @@ angular.module('mywishApp')
         {
             if(confirm("确认要结束此次报名吗？"))
             {
-                alert('123')
+                $location.path('/active_listbox')
             }
             else
             {
-                alert('456')
+                $location.path('/creat_active')
             }
             $scope.switch='true'
 
 //            <input type="button" name="btn" value="跳转" onclick="javascript:location.href='index.php'">
 //            <input type="button" name="btn" value="返回" onclick="javascript:history.back(-1)">
-            var data_status="true"
+            var data_status="false"
             for(var i in active){
 
                 if(active[i].actname==localStorage.working_activity)
@@ -85,6 +85,22 @@ angular.module('mywishApp')
                 localStorage.setItem('messages', JSON.stringify(active))
             }
         }
+//        for(var a in active){
+//            if(active[a].actname==localStorage.working_activity) {
+//                if (active[a].activity_status == "true") {
+//                    $scope.start = true
+//                }
+//                else {
+//                    $scope.start = false
+//                }
+//            }
+//            if(localStorage.working_activity==null)
+//                if(active[a].activity_status=="false"){
+//                    $scope.start=true}
+//            else
+//                $scope.start=false
+//        }
+
 //        $scope.end()
 //        function check()
 //        {
