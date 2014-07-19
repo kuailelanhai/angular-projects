@@ -14,10 +14,8 @@
 <ul>
     <div id="wrapper" class="wrapper scrollable">
         <ul class="list-style-2">
-    <li ng-click="bm(phone.actname)"  ng-repeat="phone in list1">
-        <h1>{{phone.actname}}</h1>
-        <!--<i class="icon-angle-right"></i>-->
-    </li>
+    <li class="{{phone.activity_status}}" ng-click="bm(phone.actname)" ng-repeat="phone in list1">
+        <h1>{{phone.actname}}       </h1>
             </ul>
         </div>
 </ul>

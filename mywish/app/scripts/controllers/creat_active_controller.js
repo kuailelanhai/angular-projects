@@ -27,42 +27,42 @@ angular.module('mywishApp')
 //        }
         var active=JSON.parse(localStorage.getItem("messages"))
 
-            var active=JSON.parse(localStorage.getItem("messages"));
-            for(var i in active)
-            {
-                console.log('1')
-                if(active[i].actname==localStorage.working_activity){
+        var active=JSON.parse(localStorage.getItem("messages"));
+        for(var i in active)
+        {
+            console.log('1')
+            if(active[i].actname==localStorage.working_activity){
                 console.log('122')
-                    $scope.applys=active[i].apply_list;
-                    $scope.people_number=active[i].apply_list.length;
-                    $scope.list2=active[i].apply_list;
-                    console.log($scope.list2)
-                }
+                $scope.applys=active[i].apply_list;
+                $scope.people_number=active[i].apply_list.length;
+                $scope.list2=active[i].apply_list;
+                console.log($scope.list2)
             }
+        }
 
-
+        $scope.switch="true"
         $scope.begin=function()
         {
-            $scope.switch="end"
+            $scope.switch="false"
             var data_status="true"
             for(var i in active){
 
-                if(active[i].name==localStorage.working_activity)
-                active[i].activity_status=data_status
+                if(active[i].actname==localStorage.working_activity)
+                    active[i].activity_status=data_status
                 localStorage.setItem('messages', JSON.stringify(active))
             }
 
         }
         for (var j in active) {
-            if (active[j].name == localStorage.working_activity) {
+            if (active[j].actname == localStorage.working_activity) {
                 if (active[j].activity_status == 'true') {
-                    $scope.switch = "end"
+                    $scope.switch = "false"
                 } else {
-                    $scope.switch = "start"
+                    $scope.switch = "true"
                 }
             }
         }
-        $scope.begin()
+//        $scope.begin()
         $scope.end=function()
         {
             if(confirm("确认要结束此次报名吗？"))
@@ -73,19 +73,19 @@ angular.module('mywishApp')
             {
                 alert('456')
             }
-            $scope.switch='start'
+            $scope.switch='true'
 
 //            <input type="button" name="btn" value="跳转" onclick="javascript:location.href='index.php'">
 //            <input type="button" name="btn" value="返回" onclick="javascript:history.back(-1)">
             var data_status="true"
             for(var i in active){
 
-                if(active[i].name==localStorage.working_activity)
+                if(active[i].actname==localStorage.working_activity)
                     active[i].activity_status=data_status
                 localStorage.setItem('messages', JSON.stringify(active))
             }
         }
-        $scope.end()
+//        $scope.end()
 //        function check()
 //        {
 //            var needs=JSON.parse(localStorage.getItem("messages"))

@@ -39,7 +39,7 @@ angular.module('mywishApp')
                     break;
                 }
             }
-      //      console.log(if_same)
+            //      console.log(if_same)
             if (!if_same) {
                 messages.unshift(message);
                 localStorage.setItem("messages", JSON.stringify(messages))
@@ -50,7 +50,7 @@ angular.module('mywishApp')
             }
         }
 
-            $scope.show=localStorage.getItem("messages")
+        $scope.show=localStorage.getItem("messages")
 
 
-        });
+    });

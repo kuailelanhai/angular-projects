@@ -28,7 +28,7 @@ var native_accessor = {
 //                    console.log(my_name)
                     var my_array = {'name': my_name, 'phone': my_phone}
                     console.log(my_array)
-                    active_life[i].apply_list.push(my_array)
+                    active_life[i].apply_list.unshift(my_array)
 //                    localStorage.setItem("messages", JSON.stringify(active_life))
                     for (var j = 0; j < active_life[i].apply_list.length; j++) {
 //                        console.log("==============="+my_name)
@@ -44,17 +44,17 @@ var native_accessor = {
 //                    active_life.apply_list.push(my_array)
                     localStorage.setItem('messages', JSON.stringify(active_life))
 //                    native_accessor.send_sms(json_message.messages[0].phone, "恭喜您已报名成功")
-                    function fresh() {
-                        var list_refresh = document.getElementById('list_id')
-                        if (list_refresh) {
-                            var high = angular.element(list_refresh).scope();
-                            high.$phone(function () {
-                                high.use();
-                            })
-                        }
-
-                    }
-                    fresh()
+//                    function fresh() {
+//                        var list_refresh = document.getElementById('list_id')
+//                        if (list_refresh) {
+//                            var high = angular.element(list_refresh).scope();
+//                            high.$phone(function () {
+//                                high.use();
+//                            })
+//                        }
+//
+//                    }
+//                    fresh()
                 }
             }
 
