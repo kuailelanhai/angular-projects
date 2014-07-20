@@ -33,7 +33,7 @@ angular.module('mywishApp')
             console.log('1')
             if(active[i].actname==localStorage.working_activity){
                 console.log('122')
-                $scope.applys=active[i].apply_list;
+//                $scope.applys=active[i].apply_list;
                 $scope.people_number=active[i].apply_list.length;
                 $scope.list2=active[i].apply_list;
                 console.log($scope.list2)
@@ -63,43 +63,77 @@ angular.module('mywishApp')
             }
         }
 //        $scope.begin()
+        function change_status(){
+            for(var b in active){
+                console.log('========================',active[b].activity_status == 'true')
+                if(active[b].activity_status == 'true' && active[b].actname ==localStorage.working_activity){
+                    console.log('========================')
+                    return true;
+                }
+            }
+        }
         $scope.end=function()
         {
             if(confirm("确认要结束此次报名吗？"))
             {
+                $scope.switch='true'
+                var data_status="false"
+                for(var i in active){
+                    if(active[i].actname==localStorage.working_activity)
+                        active[i].activity_status=data_status
+                    localStorage.setItem('messages', JSON.stringify(active))
+                }
                 $location.path('/active_listbox')
             }
             else
             {
-                $location.path('/creat_active')
-            }
-            $scope.switch='true'
 
+            }
+
+//
 //            <input type="button" name="btn" value="跳转" onclick="javascript:location.href='index.php'">
 //            <input type="button" name="btn" value="返回" onclick="javascript:history.back(-1)">
-            var data_status="false"
-            for(var i in active){
-
-                if(active[i].actname==localStorage.working_activity)
-                    active[i].activity_status=data_status
-                localStorage.setItem('messages', JSON.stringify(active))
+//            var data_status="false"
+//            for(var i in active){
+//                if(active[i].actname==localStorage.working_activity)
+//                    active[i].activity_status=data_status
+//                localStorage.setItem('messages', JSON.stringify(active))
+//            }
+        }
+        function judge_activity_start(){
+            for(var b in active){
+                console.log('========================',active[b].activity_status == 'true')
+                if(active[b].activity_status == 'true'){
+                    console.log('========================')
+                    return true;
+                }
             }
         }
-//        for(var a in active){
-//            if(active[a].actname==localStorage.working_activity) {
-//                if (active[a].activity_status == "true") {
-//                    $scope.start = true
-//                }
-//                else {
-//                    $scope.start = false
-//                }
-//            }
-//            if(localStorage.working_activity==null)
-//                if(active[a].activity_status=="false"){
-//                    $scope.start=true}
+        console.log(judge_activity_start(),'-------------------------------------')
+        for(var a in active){
+            if(active[a].actname==localStorage.working_activity) {
+                console.log("localStorage.working_activity======>",localStorage.working_activity)
+//                if(judge_activity_start())
+                if (!judge_activity_start()){
+                    console.log("active[a].activity_status",active[a].activity_status)
+                    console.log("start===============>")
+                    $scope.start = false
+                }
+                else {
+//                    for(var b in active){
+//                        if(active[b].activity_status!="true")
+                            console.log("active[a].activity_status",active[a].activity_status)
+                        console.log("=================show   disabled")
+                        $scope.start = true}
+
+                }
+            }
+//                if(active[a].activity_status!="true"){
+//                    $scope.switch='true'
+//                    $scope.start=false}
 //            else
-//                $scope.start=false
-//        }
+//                $scope.start=true
+
 
 //        $scope.end()
 //        function check()

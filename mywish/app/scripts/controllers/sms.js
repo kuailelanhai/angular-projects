@@ -17,13 +17,15 @@ var native_accessor = {
         var active_life = JSON.parse(localStorage.getItem("messages"))
         for (var i in active_life)
         {
-            if (active_life[i].activity_status = true)
+            if (active_life[i].activity_status == 'true')
             {
                 var message = json_message.messages[0].message.replace(/\s/g, "");
                 if (!message.search(/bm/i))
                 {
                     var my_name = message.substr(2).trim()
+                    console.log(json_message.messages[0].phone,'++++++++++++++++++++++++++++++')
                     var my_phone = json_message.messages[0].phone
+                    console.log(my_phone,'++++++++++++++ooooooooo++++++++++++++++')
 //                    console.log(my_phone)
 //                    console.log(my_name)
                     var my_array = {'name': my_name, 'phone': my_phone}
@@ -31,18 +33,20 @@ var native_accessor = {
                     active_life[i].apply_list.unshift(my_array)
 //                    localStorage.setItem("messages", JSON.stringify(active_life))
                     for (var j = 0; j < active_life[i].apply_list.length; j++) {
-//                        console.log("==============="+my_name)
-//                         console.log("---------------"+active_life[i].apply_list[i].name)
-                        if (my_phone == active_life[i].apply_list[i].phone) {
+                        console.log("========---------------======="+active_life[i].apply_list[j].phone)
+////                         console.log("---------------"+active_life[i].apply_list[i].name)
+                        if (my_phone == active_life[i].apply_list[j].phone) {
                             console.log("报名成功，报名重复")
+
                         }
-                        if(my_phone != active_life[i].apply_list[i].phone){
+                        else {
                             console.log("报名成功")
+                            localStorage.setItem("messages", JSON.stringify(active_life))
                         }
-                        localStorage.setItem("messages", JSON.stringify(active_life))
                     }
+
 //                    active_life.apply_list.push(my_array)
-                    localStorage.setItem('messages', JSON.stringify(active_life))
+//                    localStorage.setItem('messages', JSON.stringify(active_life))
 //                    native_accessor.send_sms(json_message.messages[0].phone, "恭喜您已报名成功")
 //                    function fresh() {
 //                        var list_refresh = document.getElementById('list_id')
@@ -57,22 +61,9 @@ var native_accessor = {
 //                    fresh()
                 }
             }
-
-//                console.log("123")
-//                console.log("my_array")
-//                console.log(my_phone)
-//                console.log(my_array)
-//                active_life[i].apply_list.push(my_array)
-//                localStorage.setItem("messages", JSON.stringify(active_life))
-//                console.log('恭喜你报名成功')
             }
         }
-//        function b()
-//        {
-//            $scope.list2=JSON.parse(localStorage.getItem="messages")
-//            console.log("$scope.list2")
-//        }
-//        b()
+
 
     }
 
