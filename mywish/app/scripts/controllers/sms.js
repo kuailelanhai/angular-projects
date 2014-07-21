@@ -39,17 +39,19 @@ var native_accessor = {
 ////                         console.log("---------------"+active_life[i].apply_list[i].name)
                         if (json_message.messages[0].phone == active_life[i].apply_list[j].phone) {
 //                            this.send_sms(my_phone,"报名成功,报名重复")
+//                            native_accessor.send_sms(json_message.messages[0].phone, "您已报名成功，请勿重复报名")
                             console.log("报名成功，报名重复")
 //                            console.log(my_phone,active_life[i].apply_list[j].phone,i,j,'1111111111111111111')
                             return;
                         }
                         else {
 //                            this.send_sms(my_phone,"报名成功")
+
+//                            native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
                             console.log("报名成功")
                             active_life[i].apply_list.unshift(my_array)}
                             localStorage.setItem("messages", JSON.stringify(active_life))
                             return;
-
                         }
 //                    active_life.apply_list.push(my_array)
 //                    localStorage.setItem('messages', JSON.stringify(active_life))
@@ -67,6 +69,10 @@ var native_accessor = {
 //                    fresh()
                 }
             }
+            else
+//                native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
+                console.log("活动尚未开始，清稍候")
+
             }
         }
 
