@@ -25,7 +25,7 @@ angular.module('mywishApp')
 //            var bm_list=true;
 //
 //        }
-        var active=JSON.parse(localStorage.getItem("messages"))
+//        var active=JSON.parse(localStorage.getItem("messages"))
 
         var active=JSON.parse(localStorage.getItem("messages"));
         for(var i in active)
