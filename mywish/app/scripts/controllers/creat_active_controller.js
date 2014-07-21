@@ -122,12 +122,12 @@ angular.module('mywishApp')
                 else {
 //                    for(var b in active){
 //                        if(active[b].activity_status!="true")
-                            console.log("active[a].activity_status",active[a].activity_status)
-                        console.log("=================show   disabled")
-                        $scope.start = true}
+                    console.log("active[a].activity_status",active[a].activity_status)
+                    console.log("=================show   disabled")
+                    $scope.start = true}
 
-                }
             }
+        }
 //                if(active[a].activity_status!="true"){
 //                    $scope.switch='true'
 //                    $scope.start=false}
