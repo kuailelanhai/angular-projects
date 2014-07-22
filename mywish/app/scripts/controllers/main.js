@@ -46,7 +46,11 @@ angular.module('mywishApp')
                 var messages = JSON.parse(localStorage.getItem('messages'))
 //        localStorage.current_activity=messages[0].name
 //        $location.path('bidding')
-                $location.path('/creat_active')
+                var action=JSON.parse(localStorage.getItem('messages'))
+//                for(var i in action) {
+//                    localStorage.working_activity=$scope.activity
+                        $location.path('/creat_active')
+//                }
             }
         }
 

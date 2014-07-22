@@ -20,24 +20,14 @@ var native_accessor = {
     process_received_message: function (json_message) {
         var active_life = JSON.parse(localStorage.getItem("messages"))
         for (var i in active_life) {
-
             if (active_life[i].activity_status == 'true') {
-                console.log('++++++++++++++++++++++++++++++')
                 var message = json_message.messages[0].message.replace(/\s/g, "");
                 if (!message.search(/bm/i)) {
                     var my_name = message.substr(2).trim()
-//                    console.log(json_message.messages[0].phone,'++++++++++++++++++++++++++++++')
                     var my_phone = json_message.messages[0].phone
-                    console.log(my_phone, '++++++++++++++ooooooooo++++++++++++++++')
-//                    console.log(my_phone)
-//                    console.log(my_name)
                     var my_array = {'name': my_name, 'phone': my_phone}
                     console.log(my_array)
-//                   active_life[i].apply_list.unshift(my_array)
-//                    localStorage.setItem("messages", JSON.stringify(active_life))
                     for (var j = 0; j <= active_life[i].apply_list.length; j++) {
-                        console.log("========---------------=======")
-////                         console.log("---------------"+active_life[i].apply_list[i].name)
                         if (active_life[i].apply_list.length == 0) {
                             active_life[i].apply_list.unshift(my_array)
                             localStorage.setItem("messages", JSON.stringify(active_life))
@@ -46,28 +36,20 @@ var native_accessor = {
                         }
                         else {
                             if (json_message.messages[0].phone == active_life[i].apply_list[j].phone) {
-//                            this.send_sms(my_phone,"报名成功,报名重复")
 //                                native_accessor.send_sms(json_message.messages[0].phone, "您已报名成功，请勿重复报名")
                                 console.log("报名成功，报名重复")
 //                            console.log(my_phone,active_life[i].apply_list[j].phone,i,j,'1111111111111111111')
                                 return;
                             }
-                            else {console.log("1")
-//                            this.send_sms(my_phone,"报名成功")
-
+                            else {
 //                                native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
                                 console.log("报名成功")
                                 active_life[i].apply_list.unshift(my_array)
-
                                 localStorage.setItem("messages", JSON.stringify(active_life))
                                 return;
                             }
                         }
                     }
-
-//                    active_life.apply_list.push(my_array)
-//                    localStorage.setItem('messages', JSON.stringify(active_life))
-//                    native_accessor.send_sms(json_message.messages[0].phone, "恭喜您已报名成功")
                     function fresh() {
                         var list_refresh = document.getElementById('list_id')
                         if (list_refresh) {
@@ -76,14 +58,14 @@ var native_accessor = {
                                 scope.use();
                             })
                         }
-
                     }
                     fresh()
                 }
             }
-            else
+            else {
 //                native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
                 console.log("活动尚未开始，清稍候")
+            }
 
         }
     }
