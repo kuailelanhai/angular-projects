@@ -11,31 +11,34 @@ angular
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/htmls/activity_list.html',
-                controller: 'ActivityListCtrl'
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
             })
-            .when('/activitycreate', {
-                templateUrl: 'views/htmls/create_activity.html',
-                controller: 'CreateActivityCtrl'
+            .when('/about', {
+                templateUrl: 'views/about.html',
+                controller: 'AboutCtrl'
             })
-            .when('/apply/:activity_name', {
-                templateUrl: 'views/htmls/activity_start.html',
-                controller: 'ActivityStartCtrl'
+            .when('/creat_active',{
+                templateUrl:'views/creat_active.html',
+                controller:'Creat_activeCtrl'
+            }
+        )
+            .when('/active_listbox',{
+                templateUrl:'views/active_listbox.html',
+                controller:'Active_listboxCtrl'
             })
-            .when('/bidlist/:activity_name', {
-                templateUrl: 'views/htmls/bid_start.html',
-                controller: 'BidStartCtrl'
-            })
-            .when('/bidapply/:bid_name', {
-                templateUrl: 'views/htmls/bid_apply.html',
-                controller: 'BidApplyCtrl'
-            })
-            .when('/bidresult', {
-                templateUrl: 'views/htmls/bid_result.html'
-            })
-            .when('/bidstatistics', {
-                templateUrl: 'views/htmls/bid_statistics.html'
-            })
+//        .when('/creat_active_with',{
+//            templateUrl:'views/creat_active_with.html',
+//            controller:'Creat_active_withCtrl'
+//        })
+//        .when('/creat_active_return',{
+//            templateUrl:'views/active_listbox.html',
+//            controller:'Creat_active_returnCtrl'
+//        })
+//        .when('/creat_active_with',{
+//            templateUrl:'views/creat_active_with.html',
+//            controller:'Creat_listCtrl'
+//        })
             .otherwise({
                 redirectTo: '/'
             });
