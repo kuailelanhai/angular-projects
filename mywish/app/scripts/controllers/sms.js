@@ -7,8 +7,8 @@ $(document).ready(function(){
 
 var native_accessor = {
     send_sms: function (phone, message) {
-        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
-//        console.log(phone, message);
+//        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
+        console.log(phone, message);
     },
 
     receive_message: function (json_message) {
@@ -41,24 +41,22 @@ var native_accessor = {
                         if (active_life[i].apply_list.length == 0) {
                             active_life[i].apply_list.unshift(my_array)
                             localStorage.setItem("messages", JSON.stringify(active_life))
-//                            console.log("报名成功")
-                            native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
+                            console.log("报名成功")
+//                            native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
                         }
                         else {
-                            console.log(active_life[i].apply_list[j].phone)
-                            console.log(json_message.messages[0].phone)
                             if (json_message.messages[0].phone == active_life[i].apply_list[j].phone) {
 //                            this.send_sms(my_phone,"报名成功,报名重复")
-                            native_accessor.send_sms(json_message.messages[0].phone, "您已报名成功，请勿重复报名")
-//                                console.log("报名成功，报名重复")
+//                                native_accessor.send_sms(json_message.messages[0].phone, "您已报名成功，请勿重复报名")
+                                console.log("报名成功，报名重复")
 //                            console.log(my_phone,active_life[i].apply_list[j].phone,i,j,'1111111111111111111')
                                 return;
                             }
                             else {console.log("1")
 //                            this.send_sms(my_phone,"报名成功")
 
-                            native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
-//                                console.log("报名成功")
+//                                native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
+                                console.log("报名成功")
                                 active_life[i].apply_list.unshift(my_array)
 
                                 localStorage.setItem("messages", JSON.stringify(active_life))
@@ -70,22 +68,22 @@ var native_accessor = {
 //                    active_life.apply_list.push(my_array)
 //                    localStorage.setItem('messages', JSON.stringify(active_life))
 //                    native_accessor.send_sms(json_message.messages[0].phone, "恭喜您已报名成功")
-//                    function fresh() {
-//                        var list_refresh = document.getElementById('list_id')
-//                        if (list_refresh) {
-//                            var high = angular.element(list_refresh).scope();
-//                            high.$phone(function () {
-//                                high.use();
-//                            })
-//                        }
-//
-//                    }
-//                    fresh()
+                    function fresh() {
+                        var list_refresh = document.getElementById('list_id')
+                        if (list_refresh) {
+                            var scope = angular.element(list_refresh).scope();
+                            scope.$phone(function () {
+                                scope.use();
+                            })
+                        }
+
+                    }
+                    fresh()
                 }
             }
             else
-                native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
-//                console.log("活动尚未开始，清稍候")
+//                native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
+                console.log("活动尚未开始，清稍候")
 
         }
     }

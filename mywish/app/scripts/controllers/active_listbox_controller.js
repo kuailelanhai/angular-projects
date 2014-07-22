@@ -14,7 +14,6 @@ angular.module('mywishApp')
         $scope.bm = function (actname) {
             $location.path('/creat_active')
             localStorage.working_activity = actname;
-            //       console.log(localStorage.current_activity)
         }
 
 
