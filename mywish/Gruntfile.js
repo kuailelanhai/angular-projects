@@ -10,6 +10,7 @@
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
+    grunt.loadNpmTasks('grunt-jade');
   require('load-grunt-tasks')(grunt);
 
   // Time how long tasks take. Can help when optimizing build times
@@ -29,6 +30,7 @@ module.exports = function (grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
+
       bower: {
         files: ['bower.json'],
         tasks: ['wiredep']

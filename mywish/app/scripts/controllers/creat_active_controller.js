@@ -28,19 +28,19 @@ angular.module('mywishApp')
 //        var active=JSON.parse(localStorage.getItem("messages"))
 
         var active=JSON.parse(localStorage.getItem("messages"));
-        function use() {
+
+         $scope.success=function() {
+             var active=JSON.parse(localStorage.getItem("messages"));
+             console.log(active)
             for (var i in active) {
-                console.log('1')
                 if (active[i].actname == localStorage.working_activity) {
-                    console.log('122')
 //                $scope.applys=active[i].apply_list;
                     $scope.people_number = active[i].apply_list.length;
                     $scope.list2 = active[i].apply_list;
-                    console.log($scope.list2)
                 }
             }
-        }
-        use()
+         }
+        $scope.success()
 
         $scope.switch="true"
         $scope.begin=function()

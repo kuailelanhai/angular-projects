@@ -48,7 +48,7 @@ angular.module('mywishApp')
 //        $location.path('bidding')
                 var action=JSON.parse(localStorage.getItem('messages'))
 //                for(var i in action) {
-//                    localStorage.working_activity=$scope.activity
+                    localStorage.working_activity=$scope.activity
                         $location.path('/creat_active')
 //                }
             }
