@@ -8,7 +8,7 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
-    grunt.loadNpmTasks('grunt-haml');
+    grunt.loadNpmTasks('grunt-jade');
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -19,12 +19,12 @@ module.exports = function (grunt) {
     // Define the configuration for all the tasks
     grunt.initConfig({
 
-        /*haml: {
-         create_activity: {
-         src: 'app/create_activity.haml',
-         dest: 'app/create_activity.html'
+        jade: {
+         afe: {
+         src: 'app/views/afe.jade',
+         dest: 'app/views/afe.html'
          }
-         },*/
+         },
         /*haml: {                              // Task
          dist: {                            // Target
          files: {                         // Dictionary of files
@@ -45,9 +45,9 @@ module.exports = function (grunt) {
         // Watches files for changes and runs tasks based on the changed files
         watch: {
 
-            haml: {
-                files: ['<%= yeoman.app %>/views/hamls/*'],
-                tasks: ['haml']
+            jade: {
+                files: ['<%= yeoman.app %>/views/*'],
+                tasks: ['jade']
             },
             /*haml: {
              files: [

@@ -7,8 +7,8 @@ $(document).ready(function(){
 
 var native_accessor = {
     send_sms: function (phone, message) {
-        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
-//        console.log(phone, message);
+//        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
+        console.log(phone, message);
     },
 
     receive_message: function (json_message) {
@@ -41,7 +41,7 @@ var native_accessor = {
                                 native_accessor.send_sms(json_message.messages[0].phone, "您已报名成功，请勿重复报名")
 //                                console.log("报名成功，报名重复")
 //                            console.log(my_phone,active_life[i].apply_list[j].phone,i,j,'1111111111111111111')
-                                return;
+                                break;
                             }
                             else {
                                 native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
@@ -50,8 +50,9 @@ var native_accessor = {
                                 active_life[i].apply_list.unshift(my_array)
                                 localStorage.setItem("messages", JSON.stringify(active_life))
                                 fresh()
-                                return;
+                                break;
                             }
+
                         }
                     }
 
@@ -69,10 +70,23 @@ var native_accessor = {
                     fresh()
                 }
             }
-            else {
-                native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
-//                console.log("活动尚未开始，清稍候")
+            if(active_life[i].actname==localStorage.working_activity) {
+                for (var i in active_life) {
+                        if (active_life[i].activity_status == 'false') {
+                            var message = json_message.messages[0].message.replace(/\s/g, "");
+                            if (!message.search(/bm/i)) {
+                                native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
+                            }
+                            else{}
+                        }
+                    }
             }
+
+//            else {
+//                native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
+////                console.log("活动尚未开始，清稍候")
+//
+//            }
 
         }
     }
