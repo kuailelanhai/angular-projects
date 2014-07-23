@@ -20,10 +20,14 @@ module.exports = function (grunt) {
     grunt.initConfig({
 
         jade: {
-         afe: {
-         src: 'app/views/afe.jade',
-         dest: 'app/views/afe.html'
-         }
+         bid_activity: {
+           src: 'app/views/bid_activity.jade',
+           dest: 'app/views/bid_activity.html'
+           },
+            bid_list: {
+                src:'app/views/bid_list.jade',
+                dest:'app/views/bid_list.html'
+            }
          },
         /*haml: {                              // Task
          dist: {                            // Target

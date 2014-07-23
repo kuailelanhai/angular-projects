@@ -27,6 +27,11 @@ angular
                 templateUrl:'views/active_listbox.html',
                 controller:'Active_listboxCtrl'
             })
+            .when('/bid_activity',{
+                templateUrl:'views/bid_activity.html',
+                controller:'Bid_activityCtrl'
+            }
+        )
 //        .when('/creat_active_with',{
 //            templateUrl:'views/creat_active_with.html',
 //            controller:'Creat_active_withCtrl'

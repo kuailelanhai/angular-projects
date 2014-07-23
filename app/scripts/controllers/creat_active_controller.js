@@ -10,6 +10,10 @@ angular.module('partyBidApp')
         $scope.go_return=function(){
             $location.path('/active_listbox')
         }
+        $scope.bid="竞价"
+        $scope.go_bid=function(){
+            $location.path('/bid_activity')
+        }
 //        var if_yes
 //        $scope.begin=function(){
 //            if($scope.take="开始")
