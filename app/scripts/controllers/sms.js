@@ -117,7 +117,7 @@ var native_accessor = {
                             }
                             else {
                                 native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
-//                                console.log("报名成功")
+//                                console.log("竞价成功")
                                 console.log("==================2")
                                 bid_life[i].bid_list.unshift(my_table)
                                 localStorage.setItem("messages", JSON.stringify(bid_life))
