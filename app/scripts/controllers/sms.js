@@ -89,7 +89,55 @@ var native_accessor = {
 //            }
 
         }
+        var bid_life=JSON.parse(localStorage.getItem("messages"))
+        for(i in bid_life){
+            if(bid_status=="true")
+            {
+                var message = json_message.messages[0].message.replace(/\s/g, "");
+                if (!message.search(/jj/i)) {
+                    var my_bid = message.substr(2).trim()
+                    var my_iphone = json_message.messages[0].phone
+                    var my_table = {'bid': my_bid, 'iphone': my_iphone}
+                    console.log(my_table)
+                    for (var j = 0; j <= bid_life[i].bid_list.length; j++) {
+                        if (bid_life[i].bid_list.length == 0) {
+                            bid_life[i].bid_list.unshift(my_array)
+                            localStorage.setItem("messages", JSON.stringify(bid_life))
+//                            console.log("报名成功")
+                            native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
+                            fresh()
+                        }
+                        else {
+
+                            if (json_message.messages[0].phone == active_life[i].bid_list[j].phone) {
+                                native_accessor.send_sms(json_message.messages[0].phone, "您已竞价成功，请勿重复竞价")
+//                                console.log("报名成功，报名重复")
+//                            console.log(my_phone,active_life[i].apply_list[j].phone,i,j,'1111111111111111111')
+                                break;
+                            }
+                            else {
+                                native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
+//                                console.log("报名成功")
+                                console.log("==================2")
+                                bid_life[i].bid_list.unshift(my_table)
+                                localStorage.setItem("messages", JSON.stringify(bid_life))
+                                fresh()
+                                break;
+                            }
+
+                        }
+                    }
+
+
+
+
+
+                }
+            }
+        }
     }
+
+
 
 
 }

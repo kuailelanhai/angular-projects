@@ -32,6 +32,11 @@ angular
                 controller:'Bid_activityCtrl'
             }
         )
+            .when('/bid_list',{
+                templateUrl:'views/bid_list.html',
+                controller:'Bid_listCtrl'
+            }
+        )
 //        .when('/creat_active_with',{
 //            templateUrl:'views/creat_active_with.html',
 //            controller:'Creat_active_withCtrl'

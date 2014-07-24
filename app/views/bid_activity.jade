@@ -7,13 +7,16 @@ header
          button.btn-style.btn-4( ng-click="go_by()") 返回
 
 #wrapper.wrapper.scrollable
-    ul.list-style-2
-        li(ng-repeat="bid in bids" ) {{bid.bid_name}}
+    div.ng-scope
+        ul.list-style-2
+                li(ng-repeat="bid in bids" ng-click="jj(bid.bid_name)"){{bid.bid_name}}
 
 
 footer
     ul.footer-nav.footer-nav-2tabs
         li
-            a(href='#activity_register') 报名
+            icon-group
+                a(href='#/creat_active') 报名
         li.active
-            a 竞价
+            icon-comments
+                a(href='#/bid_list') 竞价
