@@ -20,11 +20,15 @@ angular.module('partyBidApp')
 
 
 //        $scope.start_bid=localStorage.getItem(("bid_status"))
+        var bid_status2="false"
+        var bid_color1="false"
         $scope.start=function() {
 //        localStorage.bid_status='true'
         var active = JSON.parse(localStorage.getItem("messages"))
         for (var i in active) {
+
             if (active[i].actname == localStorage.working_activity) {
+                active[i].bid_status="true"
                 if (active[i].bid_data.length == 0) {
                     var bid_name = "竞价1"
                     console.log(bid_name)
@@ -35,20 +39,102 @@ angular.module('partyBidApp')
                     var bid_name = "竞价" + number
                     console.log(bid_name)
                 }
-                var bid_data = {'bid_name': bid_name}
-                console.log(bid_data)
+//                for(var k in acitve[i].bid_data)
+//                {
+//                    bid_status2="true"
+//                }
+                for(var k in active[i].bid_data){
+                    if(active[i].bid_data[0].bid_name==localStorage.working_bid) {
+                        active[i].bid_data[k].bid_status1="true"
+                        $scope.switch="false"
+
+                    }
+                }
+                var bid_data = {'bid_name': bid_name,'bid_status1':bid_status2,'bid_color':bid_color1,'bid_list':[]}
                 active[i].bid_data.unshift(bid_data)
                 localStorage.setItem('messages', JSON.stringify(active))
-                console.log(active)
-//                for(var j=0;j<=active[i].bid_status.length;j++)
-//                    active[i].bid_data.unshift(bid_data[j])
                var a= JSON.parse(localStorage.getItem("messages"))||[];
-                console.log(a[0].bid_data)
-                $scope.bids=a[0].bid_data
+                for(var j in a) {
+//                    if(a[j].actname==localStorage.working_activity){
+                    console.log(a[j].bid_data)
+                    $scope.bids = a[j].bid_data
 //                for(j in bid_status)
 //                $scope.bids=active[i].bid_status[j].bid_name
-
+                }
             }
         }
+            for(var c in active){
+                for(var d in active[c].bid_data) {
+                    localStorage.working_bid=active[c].bid_data[0].bid_name
+                        $location.path('/bid_list')
+                }
+            }
+//            for(var l in active){
+//                if(active[l].actname==localStorage.working_activity) {
+//                    active[l].activity_status = "true"
+//                }
+//            }
+            for(var o in active){
+                for(var p in active[o].bid_data){
+                    if(active[o].bid_data[p].bid_status1=="false") {
+                        console.log('-------------------111111113')
+                        active[o].bid_data[p].bid_color = "true"
+                        localStorage.setItem('messages', JSON.stringify(active))
+                        return
+                    }
+                    else{
+                        active[o].bid_data[p].bid_color = "false"
+                        localStorage.setItem('messages', JSON.stringify(active))
+                        return
+                        console.log('=======================2222222222222222')
+                    }
+                }
+            }
     }
+//        var action=JSON.parse(localStorage.getItem("messages"))
+//        for(var i in action)活动活动活动活动活动活动活动
+//        if($scope.start()){
+//            if(action[i])
+//        }
+        var b=JSON.parse(localStorage.getItem("messages"))||[];
+        for(var i in b){
+            for(var j in b[i].bid_data){
+                if(b[i].bid_data[0].bid_status1=="false")
+                {
+                    $scope.begin=true
+                    b[i].bid_data[j].bid_color="true"
+                }
+                else{
+                    $scope.begin=false
+                    b[i].bid_data[j].bid_color="false"
+                }
+            }
+        }
+        var o=JSON.parse(localStorage.getItem("messages"))||[];
+        for(var i in o){
+            for(var j in o[i].bid_data){
+                if(o[i].bid_data[j].bid_status1=="false"){
+                    $scope.switch=false
+                }
+            }
+        }
+        var a= JSON.parse(localStorage.getItem("messages"))||[];
+        for(var j in a) {
+            for(var u in a[j].bid_data) {
+                console.log(a[j].bid_data)
+                if (localStorage.working_activity == a[j].actname) {
+                    $scope.bids = a[j].bid_data
+                    a[j].bid_data[u].bid_status1="false"
+
+                }
+            }
+        }
+
+
+
+
+
+
+
+
             });

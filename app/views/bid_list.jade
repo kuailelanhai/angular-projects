@@ -1,8 +1,16 @@
 #bid_list
 header
-    竞价({{active_num}}{{people_number}}人)
+    竞价({{activity_bid}})({{people_number1}}人)
     .header-right(ng-switch="switch")
-            button.btn-style.btn-4( ng-click="start()" ng-switch-when="true") 开始
-            button.btn-style.btn-4( ng-click="end()" ng-switch-when="false") 结束
+            button.btn-style.btn-4( ng-click="end()" ng-switch-when="false" ng-disabled="final") 结束
+            button.btn-style.btn-4( ng-click="start()" ng-switch-when="true" ) 开始
     .header-left
          button.btn-style.btn-4( ng-click="go_return()") 返回
+
+ul
+    div.wrapper.scrollable
+
+            div.ng-scope
+                ul.list-style-2
+                    li(id="list1_id" ng-repeat="phone in list3 track by $index")
+                        h1 {{phone.bid}} {{phone.iphone}}

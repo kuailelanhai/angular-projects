@@ -46,7 +46,7 @@ angular.module('partyBidApp')
          }
         $scope.success()
 
-        $scope.switch="true"
+        $scope.switch="false"
         $scope.begin=function()
         {
             $scope.switch="false"
@@ -89,7 +89,10 @@ angular.module('partyBidApp')
                         active[i].activity_status=data_status
                     localStorage.setItem('messages', JSON.stringify(active))
                 }
-                $location.path('/active_listbox')
+                for(var a in active){
+                    if(active[a].actname==localStorage.working_activity)
+                        $location.path('/bid_activity')
+                }
             }
             else
             {
@@ -115,7 +118,6 @@ angular.module('partyBidApp')
                 }
             }
         }
-        console.log(judge_activity_start(),'-------------------------------------')
         for(var a in active){
             if(active[a].actname==localStorage.working_activity) {
                 console.log("localStorage.working_activity======>",localStorage.working_activity)
@@ -134,44 +136,18 @@ angular.module('partyBidApp')
 
             }
         }
+        for(var q in active){
+            for(var w in active[q].bid_data){
+                if(active[q].bid_data[w].bid_status1=="false"){
+                    $scope.switch="true"
+                    $scope.start=true
+                }
+            }
+        }
 //                if(active[a].activity_status!="true"){
 //                    $scope.switch='true'
 //                    $scope.start=false}
 //            else
 //                $scope.start=true
 
-
-//        $scope.end()
-//        function check()
-//        {
-//            var needs=JSON.parse(localStorage.getItem("messages"))
-//            var if_same;
-//            var file
-//            for(file in needs)
-//            {
-//                if($scope.creativity=needs[file].act_name)
-//                if_same=true;
-//                break
-//            }
-//            if(!if_same)
-//            {
-//                needs.unshift($scope.my_array)
-//                localStorage.setItem("messages",JSON.stringify(needs))
-//                var messages=JSON.parse(localStorage.getItem("messages"))
-//            }
-//        }
-//        check()
-
-
-
-
-
-
-
-//        function b()
-//        {
-//            $scope.list2=active[i].apply_list;
-//            console.log("$scope.list2")
-//        }
-//        b()
     });

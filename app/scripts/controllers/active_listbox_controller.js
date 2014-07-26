@@ -31,6 +31,25 @@ angular.module('partyBidApp')
             console.log($scope.list1);
         }
         a();
+        var b=JSON.parse(localStorage.getItem("messages"))||[];
+        for(var i in b){
+            if (b[i].actname == localStorage.working_activity) {
+                console.log('-------------------')
+            for(var j in b[i].bid_data) {
+//                $scope.bids=b[i].bid_data
+                $scope.bid = b[i].bid_data[j]
+                if (b[i].bid_data[0].bid_status1 == "false") {
+//                if (b[i].actname == localStorage.working_activity) {
+//                    if (b[i].bid_data[0].bid_status1 == "false") {
+                        $scope.bid.bid_color = "true"
+                    }
+                    else {
+                        $scope.bid.bid_color = "false"
+                    }
+//                $scope.bids=b[i].bid_data
+                }
+            }
+        }
 
 
     });
