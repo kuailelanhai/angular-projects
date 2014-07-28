@@ -27,8 +27,16 @@ module.exports = function (grunt) {
             bid_list: {
                 src:'app/views/bid_list.jade',
                 dest:'app/views/bid_list.html'
+            },
+            result_price:{
+                src:'app/views/result_price.jade',
+                dest:'app/views/result_price.html'
+            },
+            price_result:{
+                src:'app/views/price_result.jade',
+                dest:'app/views/price_result.html'
             }
-         },
+        },
         /*haml: {                              // Task
          dist: {                            // Target
          files: {                         // Dictionary of files

@@ -1,8 +1,8 @@
 //notify_message_received({"messages":[{"create_date":"Tue Jan 15 15:28:44 格林尼治标准时间+0800 2013","message":"bm仝键","phone":"18733171780"}]})
 //notify_message_received({"messages":[{"create_date":"Tue Jan 15 15:28:44 格林尼治标准时间+0800 2013","message":"jj308","phone":"18733171780"}]})
 var native_access;
-$(document).ready(function(){
-    native_access=new NativeAccess();
+$(document).ready(function () {
+    native_access = new NativeAccess();
 })
 
 var native_accessor = {
@@ -69,19 +69,21 @@ var native_accessor = {
                             })
                         }
                     }
+
                     fresh()
                 }
             }
-            if(active_life[i].actname==localStorage.working_activity) {
+            if (active_life[i].actname == localStorage.working_activity) {
                 for (var i in active_life) {
-                        if (active_life[i].activity_status == 'false') {
-                            var message = json_message.messages[0].message.replace(/\s/g, "");
-                            if (!message.search(/bm/i)) {
-                                native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
-                            }
-                            else{}
+                    if (active_life[i].activity_status == 'false') {
+                        var message = json_message.messages[0].message.replace(/\s/g, "");
+                        if (!message.search(/bm/i)) {
+                            native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
+                        }
+                        else {
                         }
                     }
+                }
             }
 //            if(bid_life[i].bid_name==localStorage.working_bid) {
 //                for (var i in bid_life) {
@@ -102,122 +104,123 @@ var native_accessor = {
 //            }
 
         }
-        console.log(localStorage.bid_status=="true")
-        var bid_life=JSON.parse(localStorage.getItem("messages"))
-        for(var i in bid_life){
+        console.log(localStorage.bid_status == "true")
+        var bid_life = JSON.parse(localStorage.getItem("messages"))
+        for (var i in bid_life) {
 //            for(var t in bid_life[i].bid_data){
 //            if(active_life[i].bid_data[t].bid_status1=="false")
 //            {console.log('+++++++++++++++++++++++++++++++++')
-                console.log(localStorage.bid_status=="true")
-                var message = json_message.messages[0].message.replace(/\s/g, "");
-                console.log('123')
-                if (!message.search(/jj/i)) {
-                    console.log('123========')
-                    var my_bid = message.substr(2).trim()
-                    var my_iphone = json_message.messages[0].phone
-//                    var bid_list
-                    for(var j in bid_life[i].apply_list) {
-                        var mine_name = bid_life[i].apply_list[j].name
-                        var my_table = {'bid': mine_name, 'iphone': my_iphone}
-                        console.log(my_table)
-                        for (var a = 0; a <= bid_life[i].bid_data.length; a++) {
-                            console.log('------------------------------------------')
-                            for(var b = 0;b<=bid_life[i].bid_data[a].bid_list.length;b++){
+            console.log(localStorage.bid_status == "true")
+            var message = json_message.messages[0].message.replace(/\s/g, "");
+            if (!message.search(/jj/i)) {
+                var my_bid = message.substr(2).trim()
+                var my_iphone = json_message.messages[0].phone
+                for (var j in bid_life[i].apply_list) {
+                    console.log(j)
+                    var mine_name = bid_life[i].apply_list[j].name
+                    var my_table = {'bid': mine_name, 'iphone': my_iphone}
+                    var my_message = {'name_message': mine_name, 'phone_message': my_iphone, 'price_message': my_bid}
+//                    for(var c in bid_life[i].bid_result){
+//
+//                    }
+                    console.log(my_table)
+                    for (var a = 0; a <= bid_life[i].bid_data.length; a++) {
+                        console.log('------------------------------------------')
+                        for (var b = 0; b <= bid_life[i].bid_data[a].bid_list.length; b++) {
                             console.log('-----------------------------')
                             if (bid_life[i].bid_data[a].bid_list.length == 0) {
+//                                var my_message = {'name_message': name_style, 'phone_message': phone_style, 'price_message': price_style}
+                                bid_life[i].bid_result.unshift(my_message)
+                                localStorage.setItem("messages", JSON.stringify(bid_life))
+
                                 bid_life[i].bid_data[a].bid_list.unshift(my_table)
                                 localStorage.setItem("messages", JSON.stringify(bid_life))
-                                native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
+                                var a = JSON.parse(localStorage.getItem('messages'))
+                                console.log(a)
                                 fresh1()
+                                native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
+                                return
+
                             }
 //                                console.log('-----------------------------=')
                             else {
+//                                console.log(j)
+                                console.log(bid_life[i].apply_list[j].phone)
                                 if (my_iphone == bid_life[i].apply_list[j].phone) {
+                                    console.log('1111111111111111')
+                                    console.log(j)
 //                                    bid_life[i].bid_list.unshift(my_table)
 //                                    localStorage.setItem("messages", JSON.stringify(bid_life))
 //                            console.log("报名成功")
                                     if (my_iphone == bid_life[i].bid_data[a].bid_list[b].iphone) {
                                         native_accessor.send_sms(json_message.messages[0].phone, "您已竞价，请勿重复竞价")
+                                        return
                                     }
                                     else {
+                                        bid_life[i].bid_result.unshift(my_message)
+                                        localStorage.setItem("messages", JSON.stringify(bid_life))
+
                                         bid_life[i].bid_data.bid_list.unshift(my_table)
                                         localStorage.setItem("messages", JSON.stringify(bid_life))
                                         native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
+                                        return
                                     }
                                     fresh1()
                                 }
                                 else {
                                     native_accessor.send_sms(json_message.messages[0].phone, "对不起，您没有报名此次活动")
+                                    return
                                 }
                             }
-//                                if(my_iphone != bid_life[i].apply_list[j].phone){
-//                                    native_accessor.send_sms(json_message.messages[0].phone, "竞价失败")
-//                                }
-//                            }
-//                            else {
-//                                if (json_message.messages[0].phone == bid_life[i].bid_list[j].iphone) {
-//                                    native_accessor.send_sms(json_message.messages[0].phone, "您已竞价成功，请勿重复竞价")
-////                                console.log("报名成功，报名重复")
-////                            console.log(my_phone,active_life[i].apply_list[j].phone,i,j,'1111111111111111111')
-//                                    break;
-//                                }
-//                                else {
-//                                    native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
-////                                console.log("竞价成功")
-//                                    console.log("==================2")
-//                                    bid_life[i].bid_list.unshift(my_table)
-//                                    localStorage.setItem("messages", JSON.stringify(bid_life))
-//                                    fresh1()
-//                                    break;
-//                                }
-//
-                            }
                         }
-                        function fresh1() {
-                            var list1_refresh = document.getElementById('list1_id')
-                            console.log(list1_refresh)
-                            if (list1_refresh) {
-                                var scope = angular.element(list1_refresh).scope();
-                                scope.$apply(function () {
-                                    scope.succeed()
-                                })
-                            }
+                    }
+                    function fresh1() {
+                        console.log(55)
+                        var list2_refresh = document.getElementById('list2_id')
+                        console.log(list2_refresh)
+                        if (list2_refresh) {
+                            var scope = angular.element(list2_refresh).scope();
+                            scope.$apply(function () {
+                                scope.succeed()
+                            })
                         }
-
-                        fresh1()
-//                    $scope.succeed=function() {
-//                        var active=JSON.parse(localStorage.getItem("messages"));
-//                        console.log(active)
-//                        for (var i in active) {
-//                            if (active[i].bid_name == localStorage.working_bid) {
-////                $scope.applys=active[i].apply_list;
-//                                $scope.people_number1 = active[i].bid_list.length;
-//                                $scope.list3 = active[i].bid_list;
-//                            }
-//                        }
                     }
 
-
-//                    }
-
+                    fresh1()
                 }
-//            }
-//            if(bid_life[i].bid_name==localStorage.working_bid) {
-//                for (var i in bid_life) {
-//                    if (localStorage.bid_status == 'false') {
-//                        var message = json_message.messages[0].message.replace(/\s/g, "");
-//                        if (!message.search(/jj/i)) {
-//                            native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
+            }
+        }
+//        var bid_live = JSON.parse(localStorage.getItem("messages"))
+//        for (var i in bid_live) {
+////            var my_message = {'name_message': name_style, 'phone_message': phone_style, 'price_message': price_style}
+//            for (var j in bid_live[i]) {
+//                var name_style = bid_live[i].apply_list[j].name
+//                var phone_style = bid_live[i].apply_list[j].phone
+//                for (var k in bid_live[i].bid_data) {
+//                    for (var l in bid_live[i].bid_data[k]) {
+//                        for (var q in bid_live[i].bid_data[k].bid_list) {
+//                            var price_style = bid_live[i].bid_data[k].bid_list.iphone
+//                            if (bid_live[i].bid_data[a].bid_list.length == 0) {
+//                                var my_message = {'name_message': name_style, 'phone_message': phone_style, 'price_message': price_style}
+//                                bid_live[i].bid_result.unshift(my_message)
+//                                localStorage.setItem("messages", JSON.stringify(bid_live))
+//                            }
+//                            else {
+//                                if (bid_live[i].bid_data[a].bid_list.iphone == bid_live[i].apply_list[j].phone) {
+//                                    var my_message = {'name_message': name_style, 'phone_message': phone_style, 'price_message': price_style}
+//                                    bid_live[i].bid_result.unshift(my_message)
+//                                    localStorage.setItem("messages", JSON.stringify(bid_live))
+//                                }
+//                            }
 //                        }
-//                        else{}
 //                    }
 //                }
 //            }
-        }
+////            var my_message = {'name_message': name_style, 'phone_message': phone_style, 'price_message': price_style}
+//        }
+
+
     }
-
-
-
 
 }
 

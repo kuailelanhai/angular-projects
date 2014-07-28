@@ -1,0 +1,21 @@
+header
+    竞价({{activity_bid}})({{people_number1}}人)
+    .header-left
+        button.btn-style.btn-4( ng-click="go_return()") 返回
+
+ul
+    div.wrapper.scrollable
+        div.ng-scope
+            ul.list-style-2
+                li(id="list1_id" ng-repeat="phone in list4 track by $index")
+                    h1 {{phone.name_message}} {{phone.phone_message}} {{phone.price_message}}
+
+
+footer
+    ul.footer-nav.footer-nav-2tabs
+        li
+            icon-group
+                a(href='#/result_price') 竞价结果
+        li.active
+            icon-comments
+                a(href='#/price_result') 价格统计

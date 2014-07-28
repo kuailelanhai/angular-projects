@@ -26,7 +26,7 @@ angular.module('partyBidApp')
 //messages.push(message.unshift(message));
 //localStorage.setItem("message",JSON.stringify(messages));
         function creat() {
-            var message = {'actname': $scope.activity, 'activity_status': 'false', 'apply_list': [],'bid_data': [],bid_status:'false',status:'false','bid_list':[]};
+            var message = {'actname': $scope.activity, 'activity_status': 'false', 'apply_list': [],'bid_data': [],bid_status:'false',status:'false','bid_list':[],'bid_result':[],'bid_price':[]};
             var messages = JSON.parse(localStorage.getItem("messages")) || [];
 
             var if_same
