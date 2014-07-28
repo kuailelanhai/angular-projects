@@ -34,7 +34,7 @@ var native_accessor = {
                         console.log(j)
                         console.log('____________________________')
                         if (active_life[i].apply_list.length == 0) {
-
+                            console.log('1')
                             active_life[i].apply_list.unshift(my_array)
                             localStorage.setItem("messages", JSON.stringify(active_life))
 //                            console.log("报名成功")
@@ -49,17 +49,18 @@ var native_accessor = {
                                 native_accessor.send_sms(json_message.messages[0].phone, "您已报名成功，请勿重复报名")
 //                                console.log("报名成功，报名重复")
 //                            console.log(my_phone,active_life[i].apply_list[j].phone,i,j,'1111111111111111111')
-                                break;
+                                return;
                             }
                             else {
                                 console.log(1)
-                               native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
+                                native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
 //                                console.log("报名成功")
                                 console.log("==================2")
+                                console.log("2")
                                 active_life[i].apply_list.unshift(my_array)
                                 localStorage.setItem("messages", JSON.stringify(active_life))
                                 fresh()
-                                break;
+                                return;
                             }
 
                         }
@@ -114,7 +115,7 @@ var native_accessor = {
         console.log(localStorage.bid_status == "true")
         var bid_life = JSON.parse(localStorage.getItem("messages"))
         var messages1 = JSON.parse(localStorage.getItem("messages")) || [];
-        for(var i in bid_life) {
+        for (var i in bid_life) {
 
             for (var j in bid_life[i].bid_data) {
 
@@ -123,121 +124,103 @@ var native_accessor = {
 //                my_bid.unshift(my_bid_result)
 //                for(var k in my_bid)
                 localStorage.setItem("my_bid1", JSON.stringify(my_bid_result))
-                var bid11=JSON.parse(localStorage.getItem("my_bid1"))
-                for(var k in bid11){
-                    bid11[k].my_message.unshift(my_message)
-                }
-                localStorage.setItem("my_bid1", JSON.stringify(bid11))
+                var bid11 = JSON.parse(localStorage.getItem("my_bid1"))
+//                for(var k in bid11){
+//                    bid11[k].my_message.unshift(my_message)
+//                    localStorage.setItem("my_bid1", JSON.stringify(bid11))
+//                }
+//                localStorage.setItem("my_bid1", JSON.stringify(bid11))
             }
+        }
+        var bid11 = JSON.parse(localStorage.getItem("my_bid1"))
+        for (var i in bid11) {
+            console.log('++++++++++++++=_')
+//            bid11[i].my_message.unshift(my_message)
+            localStorage.setItem("my_bid1", JSON.stringify(bid11))
         }
 
         for (var i in bid_life) {
-//            for(var t in bid_life[i].bid_data){
-//            if(active_life[i].bid_data[t].bid_status1=="false")
-//            {console.log('+++++++++++++++++++++++++++++++++')
-            console.log(localStorage.bid_status == "true")
+
             var message = json_message.messages[0].message.replace(/\s/g, "");
             if (!message.search(/jj/i)) {
                 var my_bid = message.substr(2).trim()
                 var my_iphone = json_message.messages[0].phone
                 for (var j in bid_life[i].apply_list) {
-//                var bid_j = _.find(bid_life,function(b){
-//
-//                })
-//                console.log(bid_j)
-//                if (bid_j) {
-                    console.log(j)
-                    console.log('_______________')
+
                     var mine_name = bid_life[i].apply_list[j].name
                     var my_table = {'bid': mine_name, 'iphone': my_iphone}
                     var my_message = {'name_message': mine_name, 'phone_message': my_iphone, 'price_message': my_bid}
-//                    for(var c in bid_life[i].bid_result){
-//
-//                    }
-                    var bid_var = bid_life[i].apply_list
-                    console.log(my_table)
-                    for (var a = 0; a <= bid_life[i].bid_data.length; a++) {
-                        console.log(bid_life[i].bid_data[a].bid_list.length)
-                        console.log('------------------------------------------')
 
-                        var bid_b = _.find(bid_life,function(b){
+                    var bid_var = bid_life[i].apply_list
+
+                    for (var a = 0; a <= bid_life[i].bid_data.length; a++) {
+
+
+                        var bid_b = _.find(bid_life, function (b) {
                             return  bid_life[i].bid_data[a].bid_list.length == 0
                         })
-                        console.log(bid_b)
-//                        for (var b = 0; b <= bid_life[i].bid_data[a].bid_list.length; b++) {
-                            console.log('-----------------------------1')
 
-                            if (bid_b) {
+                        if (bid_b) {
 
-//                                var my_message = {'name_message': name_style, 'phone_message': phone_style, 'price_message': price_style}
-
-                                bid_life[i].bid_result.unshift(my_message)
-                                localStorage.setItem("messages", JSON.stringify(bid_life))
-
-                                bid_life[i].bid_data[a].bid_list.unshift(my_table)
-                                localStorage.setItem("messages", JSON.stringify(bid_life))
-                                var a = JSON.parse(localStorage.getItem('messages'))
-                                console.log(a)
-                                fresh1()
-                                native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
-                                return
+                            bid_life[i].bid_result.unshift(my_message)
+                            localStorage.setItem("messages", JSON.stringify(bid_life))
+                            bid_life[i].bid_data[a].bid_list.unshift(my_table)
+                            localStorage.setItem("messages", JSON.stringify(bid_life))
+                            var a = JSON.parse(localStorage.getItem('messages'))
+                            fresh1()
+                            native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
+                            return
 //
-                            }
-//                                console.log('-----------------------------=')
-                            else {
-//                                console.log(j)
-
-                                if (json_message.messages[0].phone == bid_life[i].apply_list[j].phone) {
-
-                                    console.log(111111111111)
-                                    console.log('+-___')
-//                                    bid_life[i].bid_list.unshift(my_table)
-//                                    localStorage.setItem("messages", JSON.stringify(bid_life))
-//                            console.log("报名成功")
-//                                    var bid_c = _.find(bid_life,function(b){
-//                                        return my_iphone == bid_life[i].bid_data[a].bid_list.iphone
-//                                    })
-//                                    my_iphone == bid_life[i].bid_data[a].bid_list.iphone
-                                    console.log(my_iphone)
-                                    console.log(bid_life[i].apply_list[j].phone)
-                                    console.log('11123')
-                                    if (json_message.messages[0].phone == bid_life[i].bid_data[j].bid_list[a].iphone) {
-                                        native_accessor.send_sms(json_message.messages[0].phone, "您已竞价，请勿重复竞价")
-                                        return
-                                    }
-                                    else {
-                                        bid_life[i].bid_result.unshift(my_message)
-                                        localStorage.setItem("messages", JSON.stringify(bid_life))
-
-                                        bid_life[i].bid_data.bid_list.unshift(my_table)
-                                        localStorage.setItem("messages", JSON.stringify(bid_life))
-                                        native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
-                                        return
-                                    }
-                                    fresh1()
-                                }
-                                else {
-                                    native_accessor.send_sms(json_message.messages[0].phone, "对不起，您没有报名此次活动")
+                        }
+                        else {
+                            var a = _.find(bid_life, function (b) {
+                                return b.actname == localStorage.working_activity
+                            }).apply_list
+                            var b = _.find(bid_life, function (b) {
+                                return b.actname == localStorage.working_activity
+                            }).bid_data[0].bid_list
+                            if (_.find(a, function (a) {
+                                return a.phone == json_message.messages[0].phone
+                            })) {
+                                if (_.find(b, function (b) {
+                                    return b.iphone == json_message.messages[0].phone
+                                })) {
+                                    native_accessor.send_sms(json_message.messages[0].phone, "您已竞价，请勿重复竞价")
                                     return
                                 }
+                                else {
+                                    bid_life[i].bid_result.unshift(my_message)
+                                    localStorage.setItem("messages", JSON.stringify(bid_life))
+                                    bid_life[i].bid_data[0].bid_list.unshift(my_table)
+                                    localStorage.setItem("messages", JSON.stringify(bid_life))
+                                    fresh1()
+                                    native_accessor.send_sms(json_message.messages[0].phone, "竞价成功")
+                                    return
+                                }
+
+                            }
+                            else {
+                                native_accessor.send_sms(json_message.messages[0].phone, "对不起，您没有报名此次活动")
+                                return
                             }
                         }
                     }
-                    function fresh1() {
-                        console.log(55)
-                        var list2_refresh = document.getElementById('list2_id')
-                        console.log(list2_refresh)
-                        if (list2_refresh) {
-                            var scope = angular.element(list2_refresh).scope();
-                            scope.$apply(function () {
-                                scope.succeed()
-                            })
-                        }
-                    }
-
-                    fresh1()
                 }
+                function fresh1() {
+                    console.log(55)
+                    var list2_refresh = document.getElementById('list2_id')
+                    console.log(list2_refresh)
+                    if (list2_refresh) {
+                        var scope = angular.element(list2_refresh).scope();
+                        scope.$apply(function () {
+                            scope.succeed()
+                        })
+                    }
+                }
+
+                fresh1()
             }
+        }
 //        function bid_change() {
 //            for (var a = 0; a <= bid_var.length; a++){
 //                var bid_var1 = bid_var[a].bid_data
@@ -258,7 +241,7 @@ var native_accessor = {
 //                return
 //            }
 //        }
-        }
+    }
 
 
 
@@ -290,8 +273,6 @@ var native_accessor = {
 //            }
 ////            var my_message = {'name_message': name_style, 'phone_message': phone_style, 'price_message': price_style}
 //        }
-
-
 
 
 }

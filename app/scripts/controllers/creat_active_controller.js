@@ -85,9 +85,10 @@ angular.module('partyBidApp')
                 $scope.switch='true'
                 var data_status="false"
                 for(var i in active){
-                    if(active[i].actname==localStorage.working_activity)
-                        active[i].activity_status=data_status
-                    localStorage.setItem('messages', JSON.stringify(active))
+                    if(active[i].actname==localStorage.working_activity) {
+                        active[i].activity_status = data_status
+                        localStorage.setItem('messages', JSON.stringify(active))
+                    }
                 }
                 for(var a in active){
                     if(active[a].actname==localStorage.working_activity)

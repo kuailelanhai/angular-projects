@@ -51,6 +51,7 @@ angular.module('partyBidApp')
                     }
                 }
                 var bid_data = {'bid_name': bid_name,'bid_status1':bid_status2,'bid_color':bid_color1,'bid_list':[]}
+                console.log("bid_data")
                 active[i].bid_data.unshift(bid_data)
                 localStorage.setItem('messages', JSON.stringify(active))
                var a= JSON.parse(localStorage.getItem("messages"))||[];

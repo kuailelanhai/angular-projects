@@ -29,7 +29,7 @@ angular.module('partyBidApp')
             }
 
         }
-        $scope.show_message()
+
 
 
 

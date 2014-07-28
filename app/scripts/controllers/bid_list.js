@@ -15,7 +15,6 @@ angular.module('partyBidApp')
         }
         $scope.succeed=function() {
             var active=JSON.parse(localStorage.getItem("messages"));
-            console.log(66666666666)
             var a = JSON.parse(localStorage.getItem('messages'))
             console.log(a)
             for (var i in active) {

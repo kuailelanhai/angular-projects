@@ -1,19 +1,109 @@
 {
-  "name": "party-bid",
-  "version": "0.0.0",
-  "dependencies": {
-    "angular": "1.2.15",
-    "json3": "~3.2.6",
-    "es5-shim": "~2.1.0",
-    "jquery": "~1.11.0",
-    "bootstrap": "~3.0.3",
-    "angular-resource": "1.2.15",
-    "angular-cookies": "1.2.15",
-    "angular-sanitize": "1.2.15",
-    "angular-route": "1.2.15"
-  },
-  "devDependencies": {
-    "angular-mocks": "1.2.15",
-    "angular-scenario": "1.2.15"
-  }
+    "name": "party-bid",
+    "version": "0.0.0",
+    "dependencies": {
+        "angular": "1.2.15",
+        "json3": "~3.2.6",
+        "es5-shim": "~2.1.0",
+        "jquery": "~1.11.0",
+        "bootstrap": "~3.0.3",
+        "angular-resource": "1.2.15",
+        "angular-cookies": "1.2.15",
+        "angular-sanitize": "1.2.15",
+        "angular-route": "1.2.15"
+    },
+    "devDependencies": {
+        "angular-mocks": "1.2.15",
+        "angular-scenario": "1.2.15"
+    }
 }
+
+[
+    {
+        "actname": "1",
+        "activity_status": "false",
+        "apply_list": [
+            {
+                "name": "仝键",
+                "phone": "1"
+            },
+            {
+                "name": "仝键",
+                "phone": "3"
+            }
+        ],
+        "bid_data": [
+            {
+                "bid_name": "竞价5",
+                "bid_status1": "false",
+                "bid_color": "true",
+                "bid_list": [
+                    {
+                        "bid": "仝键",
+                        "iphone": "3"
+                    }
+                ]
+            },
+            {
+                "bid_name": "竞价4",
+                "bid_status1": "true",
+                "bid_color": "false",
+                "bid_list": []
+            },
+            {
+                "bid_name": "竞价3",
+                "bid_status1": "true",
+                "bid_color": "false",
+                "bid_list": [
+                    {
+                        "bid": "仝键",
+                        "iphone": "3"
+                    }
+                ]
+            },
+            {
+                "bid_name": "竞价2",
+                "bid_status1": "true",
+                "bid_color": "false",
+                "bid_list": [
+                    {
+                        "bid": "仝键",
+                        "iphone": "3"
+                    }
+                ]
+            },
+            {
+                "bid_name": "竞价1",
+                "bid_status1": "true",
+                "bid_color": "false",
+                "bid_list": []
+            }
+        ],
+        "bid_status": "true",
+        "status": "false",
+        "bid_list": [],
+        "bid_result": [
+            {
+                "name_message": "仝键",
+                "phone_message": "1",
+                "price_message": "308"
+            },
+            {
+                "name_message": "仝键",
+                "phone_message": "3",
+                "price_message": "308"
+            },
+            {
+                "name_message": "仝键",
+                "phone_message": "3",
+                "price_message": "308"
+            },
+            {
+                "name_message": "仝键",
+                "phone_message": "3",
+                "price_message": "308"
+            }
+        ],
+        "bid_price": []
+    }
+]
