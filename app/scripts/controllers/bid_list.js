@@ -68,7 +68,8 @@ angular.module('partyBidApp')
         $scope.end=function(){
             if(confirm("确认要结束本轮的竞价吗？"))
             {
-                var a="false"
+//                var a="false"
+                var active=JSON.parse(localStorage.getItem("messages"));
                 for(var i in active){
 //                    if(active[i].bid_name==localStorage.working_bid) {
                         for (var j in active[i].bid_data) {
@@ -84,7 +85,9 @@ angular.module('partyBidApp')
 
                         }
 //                    }
+                    localStorage.setItem('messages', JSON.stringify(active))
                 }
+                localStorage.setItem('messages', JSON.stringify(active))
             }
             else
             {

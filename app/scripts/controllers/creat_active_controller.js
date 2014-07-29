@@ -82,6 +82,7 @@ angular.module('partyBidApp')
         {
             if(confirm("确认要结束此次报名吗？"))
             {
+                var active=JSON.parse(localStorage.getItem("messages"));
                 $scope.switch='true'
                 var data_status="false"
                 for(var i in active){
