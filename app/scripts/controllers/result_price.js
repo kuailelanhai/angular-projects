@@ -26,7 +26,6 @@ angular.module('partyBidApp')
                         $scope.people_number1 = active[i].bid_data[j].bid_list.length;
                         $scope.list4 = active[i].bid_data[j].bid_list;
                         localStorage.setItem('messages', JSON.stringify(active))
-                        console.log(active[i].bid_result)
                     }
                 }
             }
@@ -40,13 +39,26 @@ angular.module('partyBidApp')
                     for (var k in action[i].bid_data[j].bid_list) {
                         if (action[i].bid_data[j].bid_name == localStorage.working_bid) {
                             if (action[i].bid_data[j].bid_list[0].iprice != action[i].bid_data[j].bid_list[k].iprice) {
-                                k = 0
                                 $scope.bider = action[i].bid_data[j].bid_list[0].bid
                                 $scope.telephone = action[i].bid_data[j].bid_list[0].iphone
                                 $scope.bider_price = action[i].bid_data[j].bid_list[0].iprice
+                                $scope.show_bid = true
+                                console.log('++++++++++++++++=')
                             }
                             else {
-                                k = k + 1;
+//                                var num = 1
+//                                var num = action[i].bid_data[j].bid_list.length + 1
+                                var num = ++ k
+                                console.log(num)
+//                                if (action[i].bid_data[j].bid_list[num].iprice != action[i].bid_data[j].bid_list[k].iprice){
+//                                    $scope.bider = action[i].bid_data[j].bid_list[num].bid
+//                                    $scope.telephone = action[i].bid_data[j].bid_list[num].iphone
+//                                    $scope.bider_price = action[i].bid_data[j].bid_list[num].iprice
+//                                    $scope.show_bid = true
+//                                }
+//                                else{
+//
+//                                }
                             }
                         }
                     }
@@ -58,6 +70,7 @@ angular.module('partyBidApp')
 //        $timeout(function () {
 //            $('#ModalSuccess').modal('hide');
 //        }, 3000)
+
 
 
     });

@@ -98,6 +98,7 @@ angular.module('partyBidApp')
 //                            active[i].bid_price.unshift(my_price)
 //                            $scope.list3.map(bidCount,function(value,key){return {'price':key,'count':value}});
                             $scope.list3 = active[i].bid_data[j].bid_list;
+                            $scope.show_bid = true
                             localStorage.setItem('messages', JSON.stringify(active))
 
                         }

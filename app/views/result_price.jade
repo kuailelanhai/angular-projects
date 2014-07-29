@@ -21,17 +21,16 @@ ul
 .modal.fade#ModalSuccess
     .modal-dialog
         .modal-header
-        button.close(data-dismiss="modal" aria-hidden="true")&times;
+        button.close(data-dismiss="modal" aria-hidden="true")&times_count;
         .modal-body
         .center
         h1 {{bider}}  {{telephone}}  ￥{{bider_price}}    竞价成功
         .modal-footer
 
-
-ul
-    div.wrapper.scrollable
-        div.ng-scope
-            ul.list-style-2
+footer
+        ul
+            ul.list-style-2(ng-show = "show_bid")
+                h1 {{bider}}  {{telephone}}  ￥{{bider_price}}    竞价成功
 
 
 
