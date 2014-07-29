@@ -56,20 +56,20 @@ angular.module('partyBidApp')
                                 console.log('++++++++++++++++=')
                             }
                             else {
-                                var k = 0
-//                                var num = action[i].bid_data[j].bid_list.length + 1
-                                var num = ++ k
-                                console.log('++++++++++++++')
-                                console.log(num)
-                                if (action[i].bid_data[j].bid_list[k].iprice < action[i].bid_data[j].bid_list[num].iprice){
-                                    $scope.bider = action[i].bid_data[j].bid_list[k].bid
-                                    $scope.telephone = action[i].bid_data[j].bid_list[k].iphone
-                                    $scope.bider_price = action[i].bid_data[j].bid_list[k].iprice
-                                    $scope.show_bid = true
-                                }
-                                else{
-
-                                }
+//                                var k = 0
+////                                var num = action[i].bid_data[j].bid_list.length + 1
+//                                var num = ++ k
+//                                console.log('++++++++++++++')
+//                                console.log(num)
+//                                if (action[i].bid_data[j].bid_list[k].iprice < action[i].bid_data[j].bid_list[num].iprice){
+//                                    $scope.bider = action[i].bid_data[j].bid_list[k].bid
+//                                    $scope.telephone = action[i].bid_data[j].bid_list[k].iphone
+//                                    $scope.bider_price = action[i].bid_data[j].bid_list[k].iprice
+//                                    $scope.show_bid = true
+//                                }
+//                                else{
+//
+//                                }
                             }
                         }
                     }

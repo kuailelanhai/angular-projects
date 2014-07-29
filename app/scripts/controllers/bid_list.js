@@ -80,7 +80,13 @@ angular.module('partyBidApp')
                             localStorage.setItem('messages', JSON.stringify(active))
 //                            $scope.final = "true"
 //                            active[i].bid_data[j].bid_color = "false"
-                            $location.path('/result_price')
+                            if(active[i].bid_data[j].bid_list.length == 0)
+                            {
+                                $location.path('/bid_list')
+                            }
+                            else {
+                                $location.path('/result_price')
+                            }
                             return
 
                         }

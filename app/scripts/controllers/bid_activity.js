@@ -130,6 +130,27 @@ angular.module('partyBidApp')
                 }
             }
         }
+        var active = JSON.parse(localStorage.getItem("messages"))
+        function judge_bid(){
+            for(var i in active){
+                if(active[i].activity_status == 'true'){
+                    return true;
+                }
+            }
+        }
+        for(var a in active){
+            if(active[a].actname == localStorage.working_activity){
+                if(!judge_bid()){
+//                    console.log('+++++++++===')
+                    $scope.begin = false
+                }
+                else{
+                    console.log('+++++++++===')
+                    $scope.begin = true
+                }
+            }
+        }
+
 
 
 

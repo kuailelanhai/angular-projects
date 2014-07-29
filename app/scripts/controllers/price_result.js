@@ -54,9 +54,10 @@ angular.module('partyBidApp')
             console.log($scope.activity_bid)
             for(var i in active){
                 for(var j in active[i].bid_data){
+                    for(var k in active[i].bid_data[j].bid_list) {
                     if(active[i].bid_data[j].bid_name==localStorage.working_bid){
                         $scope.people_number1 = active[i].bid_data[j].bid_list.length;
-                        for(var k in active[i].bid_data[j].bid_list) {
+//                        for(var k in active[i].bid_data[j].bid_list) {
                             var bidding = active[i].bid_data[j].bid_list;
                             var name = active[i].bid_data[j].bid_list[k].bid
                             var price = active[i].bid_data[j].bid_list[k].iprice
@@ -94,9 +95,6 @@ angular.module('partyBidApp')
 //                                    $scope.fail = "true"
 //                                }
 //                            }
-//                            $scope.list3.sortBy(my_price,function(bid){return bid.price});
-//                            active[i].bid_price.unshift(my_price)
-//                            $scope.list3.map(bidCount,function(value,key){return {'price':key,'count':value}});
                             $scope.list3 = active[i].bid_data[j].bid_list;
 //                            $scope.show_bid = true
                             localStorage.setItem('messages', JSON.stringify(active))

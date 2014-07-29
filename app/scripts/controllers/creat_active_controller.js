@@ -123,18 +123,20 @@ angular.module('partyBidApp')
         for(var a in active){
             if(active[a].actname==localStorage.working_activity) {
                 console.log("localStorage.working_activity======>",localStorage.working_activity)
-//                if(judge_activity_start())
                 if (!judge_activity_start()){
                     console.log("active[a].activity_status",active[a].activity_status)
                     console.log("start===============>")
                     $scope.start = false
+//                    $scope.take = true
                 }
                 else {
 //                    for(var b in active){
 //                        if(active[b].activity_status!="true")
                     console.log("active[a].activity_status",active[a].activity_status)
                     console.log("=================show   disabled")
-                    $scope.start = true}
+                    $scope.start = true
+//                    $scope.take = true
+                }
 
             }
         }
@@ -146,6 +148,34 @@ angular.module('partyBidApp')
                 }
             }
         }
+//        for(var i in active){
+//            if(active[i].actname==localStorage.working_activity){
+//                console.log(active[i].activity_status )
+//                if(active[i].activity_status == "true"){
+//                    $scope.take = false
+//                }
+//            }
+//        }
+//        $scope.take = 'true'
+//        function judge_bid(){
+//            for(var i in active){
+//                if(active[i].activity_status == 'true'){
+//                    return true;
+//                }
+//            }
+//        }
+//        for(var a in active){
+//            if(active[a].actname == localStorage.working_activity){
+//                if(!judge_bid()){
+////                    console.log('+++++++++===')
+//                    $scope.take = true
+//                }
+//                else{
+//                    console.log('+++++++++===')
+//                    $scope.take = false
+//                }
+//            }
+//        }
 //                if(active[a].activity_status!="true"){
 //                    $scope.switch='true'
 //                    $scope.start=false}
