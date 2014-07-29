@@ -114,24 +114,24 @@ var native_accessor = {
         }
         console.log(localStorage.bid_status == "true")
         var bid_life = JSON.parse(localStorage.getItem("messages"))
-        var messages1 = JSON.parse(localStorage.getItem("messages")) || [];
-        for (var i in bid_life) {
-
-            for (var j in bid_life[i].bid_data) {
-
-                var bid_active1 = bid_life[i].bid_data[j].bid_name
-                var my_bid_result = {'bid_name': bid_active1, 'my_message': []}
-//                my_bid.unshift(my_bid_result)
-//                for(var k in my_bid)
-                localStorage.setItem("my_bid1", JSON.stringify(my_bid_result))
-                var bid11 = JSON.parse(localStorage.getItem("my_bid1"))
+//        var messages1 = JSON.parse(localStorage.getItem("messages")) || [];
+//        for (var i in bid_life) {
+//
+//            for (var j in bid_life[i].bid_data) {
+//
+//                var bid_active1 = bid_life[i].bid_data[j].bid_name
+//                var my_bid_result = {'bid_name': bid_active1, 'my_message': []}
+////                my_bid.unshift(my_bid_result)
+////                for(var k in my_bid)
+//                localStorage.setItem("my_bid1", JSON.stringify(my_bid_result))
+//                var bid11 = JSON.parse(localStorage.getItem("my_bid1"))
 //                for(var k in bid11){
-//                    bid11[k].my_message.unshift(my_message)
-//                    localStorage.setItem("my_bid1", JSON.stringify(bid11))
+////                    bid11[k].my_message.unshift(my_message)
+//                    localStorage.setItem("/my_bid1", JSON.stringify(bid11))
 //                }
 //                localStorage.setItem("my_bid1", JSON.stringify(bid11))
-            }
-        }
+//            }
+//        }
         var bid11 = JSON.parse(localStorage.getItem("my_bid1"))
         for (var i in bid11) {
             console.log('++++++++++++++=_')
@@ -148,8 +148,8 @@ var native_accessor = {
                 for (var j in bid_life[i].apply_list) {
 
                     var mine_name = bid_life[i].apply_list[j].name
-                    var my_table = {'bid': mine_name, 'iphone': my_iphone}
-                    var my_message = {'name_message': mine_name, 'phone_message': my_iphone, 'price_message': my_bid}
+                    var my_table = {'bid': mine_name, 'iphone': my_iphone,'iprice':my_bid}
+//                    var my_message = {'name_message': mine_name, 'phone_message': my_iphone, 'price_message': my_bid}
 
                     var bid_var = bid_life[i].apply_list
 
@@ -161,9 +161,9 @@ var native_accessor = {
                         })
 
                         if (bid_b) {
-
-                            bid_life[i].bid_result.unshift(my_message)
-                            localStorage.setItem("messages", JSON.stringify(bid_life))
+                            bid_life
+//                            bid_life[i].bid_result.unshift(my_message)
+//                            localStorage.setItem("messages", JSON.stringify(bid_life))
                             bid_life[i].bid_data[a].bid_list.unshift(my_table)
                             localStorage.setItem("messages", JSON.stringify(bid_life))
                             var a = JSON.parse(localStorage.getItem('messages'))
@@ -189,8 +189,8 @@ var native_accessor = {
                                     return
                                 }
                                 else {
-                                    bid_life[i].bid_result.unshift(my_message)
-                                    localStorage.setItem("messages", JSON.stringify(bid_life))
+//                                    bid_life[i].bid_result.unshift(my_message)
+//                                    localStorage.setItem("messages", JSON.stringify(bid_life))
                                     bid_life[i].bid_data[0].bid_list.unshift(my_table)
                                     localStorage.setItem("messages", JSON.stringify(bid_life))
                                     fresh1()

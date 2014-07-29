@@ -55,24 +55,22 @@ angular.module('partyBidApp')
             for(var i in active){
                 for(var j in active[i].bid_data){
                     if(active[i].bid_data[j].bid_name==localStorage.working_bid){
-                        $scope.people_number1 = active[i].bid_result.length;
-                        for(var k in active[i].bid_result) {
-                            var bidding = active[i].bid_result;
-                            var name = active[i].bid_result[k].name_message
-                            var price = active[i].bid_result[k].price_message
+                        $scope.people_number1 = active[i].bid_data[j].length;
+                        for(var k in active[i].bid_data[j].bid_list) {
+                            var bidding = active[i].bid_data[j].bid_list;
+                            var name = active[i].bid_data[j].bid_list[k].bid
+                            var price = active[i].bid_data[j].bid_list[k].iprice
                             var bid_price = active[i].bid_price
                             console.log(price)
-//                            var num = active[i].bid_result[k].price_message.length
-//                            var bidList = [{'name':1,'price':22},{'name':2,'price':23},{'name':3,'price':21}];
                             var count = _.countBy(bidding, function (bidding) {
-                                return bidding.price_message
+                                return bidding.iprice
                             })
                             var num = _.map(count, function (value, key) {
                                 return {"price": key, "count": value}
                             })
                             $scope.biddings = num
-                            var my_price = [{'my_name': name,'my_price1': price}]
-                            localStorage.setItem("bid_price", JSON.stringify(num))
+//                            var my_price = [{'my_name': name,'my_price1': price}]
+//                            localStorage.setItem("bid_price", JSON.stringify(num))
 //                            for (var l in bid_price) {
 //                                if (bid_price[l].count == 1) {
 //                                    for (var i in active) {
@@ -99,7 +97,7 @@ angular.module('partyBidApp')
 //                            $scope.list3.sortBy(my_price,function(bid){return bid.price});
 //                            active[i].bid_price.unshift(my_price)
 //                            $scope.list3.map(bidCount,function(value,key){return {'price':key,'count':value}});
-                            $scope.list3 = active[i].bid_result;
+                            $scope.list3 = active[i].bid_data[j].bid_list;
                             localStorage.setItem('messages', JSON.stringify(active))
 
                         }
