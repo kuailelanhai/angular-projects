@@ -3,7 +3,7 @@
  */
 'use strict';
 angular.module('partyBidApp')
-    .controller('Result_priceCtrl', function ($scope, $location) {
+    .controller('Result_priceCtrl', function ($scope, $location,$timeout) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
@@ -77,10 +77,17 @@ angular.module('partyBidApp')
             }
         }
         $scope.show_bid_message()
-        $('#ModalSuccess').modal("show");
-        $(function () {
-            $('#ModalSuccess').modal('hide');
-        },3000)
+//        $('#ModalSuccess').modal("show");
+//        $(function () {
+//            $('#ModalSuccess').modal('hide');
+//        },399000)
+
+        $timeout(function () {
+                        $('#ModalSuccess').modal("show");
+                        $timeout(function () {
+                                $('#ModalSuccess').modal('hide');
+                            }, 3000)
+                    })
 
 
 
