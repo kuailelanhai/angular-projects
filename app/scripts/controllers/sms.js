@@ -40,6 +40,7 @@ var native_accessor = {
 //                            console.log("报名成功")
                             native_accessor.send_sms(json_message.messages[0].phone, "报名成功")
                             fresh()
+                            return
                         }
                         else {
 
@@ -87,6 +88,7 @@ var native_accessor = {
                         var message = json_message.messages[0].message.replace(/\s/g, "");
                         if (!message.search(/bm/i)) {
                             native_accessor.send_sms(json_message.messages[0].phone, "活动尚未开始，清稍候")
+                            return
                         }
                         else {
                         }
