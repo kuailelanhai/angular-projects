@@ -7,8 +7,8 @@ $(document).ready(function () {
 
 var native_accessor = {
     send_sms: function (phone, message) {
-//        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
-        console.log(phone, message);
+        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
+//        console.log(phone, message);
     },
 
     receive_message: function (json_message) {
@@ -146,7 +146,15 @@ var native_accessor = {
                 var my_bid = message.substr(2).trim()
                 var my_iphone = json_message.messages[0].phone
                 for (var j in bid_life[i].apply_list) {
-                    var mine_name = bid_life[i].apply_list[j].name
+                    if(bid_life[i].apply_list[j].phone == json_message.messages[0].phone)
+                    {
+                        var mine_name = bid_life[i].apply_list[j].name
+                    }
+                    if(bid_life[i].apply_list[1].phone == json_message.messages[0].phone)
+                    {
+                        var mine_name = bid_life[i].apply_list[1].name
+                    }
+//                    var mine_name = bid_life[i].apply_list[j].name
                     var my_table = {'bid': mine_name, 'iphone': my_iphone,'iprice':my_bid}
 //                    var my_message = {'name_message': mine_name, 'phone_message': my_iphone, 'price_message': my_bid}
                     var bid_var = bid_life[i].apply_list

@@ -93,21 +93,23 @@ angular.module('partyBidApp')
             }
     }
 //        var action=JSON.parse(localStorage.getItem("messages"))
-//        for(var i in action)活动活动活动活动活动活动活动
+//        for(var i in action)
 //        if($scope.start()){
 //            if(action[i])
 //        }
         var b=JSON.parse(localStorage.getItem("messages"))||[];
         for(var i in b){
             for(var j in b[i].bid_data){
-                if(b[i].bid_data[0].bid_status1=="false")
-                {
-                    $scope.begin=true
-                    b[i].bid_data[j].bid_color="true"
-                }
-                else{
-                    $scope.begin=false
-                    b[i].bid_data[j].bid_color="false"
+                if(b[i].bid_data[j].bid_name == localStorage.working_bid) {
+                    if (b[i].bid_data[j].bid_status1 == "false") {
+                        $scope.begin = true
+                        b[i].bid_data[j].bid_color = "true"
+                        console.log('++++++++')
+                    }
+                    else {
+                        $scope.begin = false
+                        b[i].bid_data[j].bid_color = "false"
+                    }
                 }
             }
         }
@@ -130,26 +132,27 @@ angular.module('partyBidApp')
                 }
             }
         }
-        var active = JSON.parse(localStorage.getItem("messages"))
-        function judge_bid(){
-            for(var i in active){
-                if(active[i].activity_status == 'true'){
-                    return true;
-                }
-            }
-        }
-        for(var a in active){
-            if(active[a].actname == localStorage.working_activity){
-                if(!judge_bid()){
+//        var active = JSON.parse(localStorage.getItem("messages"))
+//        function judge_bid(){
+//            for(var i in active){
+//                if(active[i].activity_status == 'true'){
+//                    return true;
+//                }
+//            }
+//        }
+//        for(var a in active){
+//            if(active[a].actname == localStorage.working_activity){
+//                if(!judge_bid()){
+////                    console.log('+++++++++===')
+//                    $scope.begin = false
+//                    console.log('______')
+//                }
+//                else{
 //                    console.log('+++++++++===')
-                    $scope.begin = false
-                }
-                else{
-                    console.log('+++++++++===')
-                    $scope.begin = true
-                }
-            }
-        }
+//                    $scope.begin = true
+//                }
+//            }
+//        }
 
 
 

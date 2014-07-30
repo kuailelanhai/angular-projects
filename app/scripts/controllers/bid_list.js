@@ -23,12 +23,14 @@ angular.module('partyBidApp')
                 for (var j in active[i].bid_data) {
 //                    for(var k in active[i].bid_data[j].bid_list)
              //       if (active[i].bid_data[j].name == localStorage.working_bid){
+                    if(active[i].actname == localStorage.working_activity) {
                         $scope.activity_bid = localStorage.working_bid
-                    if(active[i].bid_data[j].bid_name==localStorage.working_bid){
-                    $scope.people_number1 = active[i].bid_data[j].bid_list.length;
-                    $scope.list3 = active[i].bid_data[j].bid_list;
-                    localStorage.setItem('messages', JSON.stringify(active))
-                    console.log(active[i].bid_data[j].bid_list)
+                        if (active[i].bid_data[j].bid_name == localStorage.working_bid) {
+                            $scope.people_number1 = active[i].bid_data[j].bid_list.length;
+                            $scope.list3 = active[i].bid_data[j].bid_list;
+                            localStorage.setItem('messages', JSON.stringify(active))
+                            console.log(active[i].bid_data[j].bid_list)
+                        }
                     }
                 }
             }
@@ -192,9 +194,6 @@ angular.module('partyBidApp')
 //            }
 //        }
 //        fresh2()
-
-
-
 
 
     });
