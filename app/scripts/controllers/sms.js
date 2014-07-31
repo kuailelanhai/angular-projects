@@ -7,8 +7,8 @@ $(document).ready(function () {
 
 var native_accessor = {
     send_sms: function (phone, message) {
-        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
-//        console.log(phone, message);
+//        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
+        console.log(phone, message);
     },
 
     receive_message: function (json_message) {

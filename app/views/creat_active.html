@@ -24,7 +24,7 @@
            <a class="btn-style btn-4" ng-click="go_return()">返回</a>
        </div>
        <div class="header-right" ng-switch="switch">
-           <button class="btn-style btn-4" ng-switch-when="true" ng-click="begin()" ng-disabled="start">开始</button>
+           <a class="btn-style btn-4" ng-switch-when="true" ng-click="begin()" ng-disabled="start">开始</a>
            <a class="btn-style btn-4" ng-switch-when="false" ng-click="end()" >结束</a>
            <!--<button onclick="{ confirm('确认要结束此次报名吗？')location.href='http://localhost:9000/#/creat_active'}">获取现在的位置</button>-->
            <!--<input type="button" value="go" onclick="if(confirm('确定跳转？')){location.href='http://localhost:9000/#/active_listbox'>-->
@@ -54,7 +54,7 @@
                <a href="#/creat_active">报名</a>
            </li>
            <li class="active" class="footer-nav footer-nav-2tabs">
-               <a href="#/bid_activity">竞价</a>
+               <a href="#/bid_activity/{{activity_name}}">竞价</a>
            </li>
        </ul>
    </footer>
