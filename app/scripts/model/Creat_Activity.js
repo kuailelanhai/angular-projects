@@ -13,7 +13,6 @@ Creat_Activity.get_bm1_list=function(active_name){
     var activity = JSON.parse(localStorage.getItem('messages'))
     var a = _.findWhere(activity,{name:active_name}).bid_data
     return a
-
 }
 Creat_Activity.check_activity_status =function(active_name){
     var activity = JSON.parse(localStorage.getItem('messages'))
@@ -39,4 +38,13 @@ Creat_Activity.save_apply_end_status=function(active_name){
     var activity=JSON.parse(localStorage.getItem('messages'));
     _.findWhere(activity,{name:active_name}).activity_status='false';
     localStorage.setItem('messages',JSON.stringify(activity));
+}
+
+
+Creat_Activity.show_bm_list = function(){
+    $scope.list1 = JSON.parse(localStorage.getItem("messages"))||[];
+    console.log($scope.list1);
+}
+Creat_Activity.for_actname_biddata = function(){
+
 }
