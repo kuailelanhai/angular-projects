@@ -18,10 +18,13 @@ angular.module('partyBidApp')
     .controller('Creat_activeCtrl', function ($scope, $routeParams, $location) {
         $scope.activity_name = $routeParams.activity_name;
         $scope.success=function() {
-            $scope.list2 = Creat_Activity.get_bm_list($scope.activity_name);
-            $scope.people_number = Creat_Activity.get_bm_list.length
+            Activity.judge_actname_w()
+            console.log(Activity.judge_actname_w)
+            $scope.list2 = Creat_Activity.get_bm_list();
+            $scope.people_number = Creat_Activity.get_bm_list().length
         }
         $scope.success()
+        Activity.judge_actname_w()
         $scope.switch = Creat_Activity.check_activity_status($scope.activity_name);
         $scope.start = Creat_Activity.is_apply_able($scope.activity_name);
 //        $scope.people_number = Creat_Activity.get_bm_list.length
@@ -42,6 +45,18 @@ angular.module('partyBidApp')
                 $location.path('/bid_activity' + $scope.activity_name);
             }
         }
+//        if(!Activity.judge_activity_start){
+//            $scope.start = false
+//            console.log('=========')
+//        }
+//        else{
+//            $scope.start = true
+//            console.log('--------')
+//        }
+//        if(Activity.judge_actname_wactivity.bid_status1=="false"){
+//            $scope.switch="true"
+//            $scope.start=true
+//        }
 
 
 

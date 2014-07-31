@@ -2,8 +2,12 @@
  * Created by guorui on 14-7-30.
  */
 function Activity(name){
-    this.name = name
+//    this.name = name
     this.bidstatus = 'bidend';
+    this.actname = name
+    this.activity_status
+    this.apply_list = []
+
 }
 Activity.prototype.creat_active = function(show1){
     if(!show1){
@@ -51,10 +55,11 @@ Activity.judge_actname_wactivity = function(){
 }
 Activity.judge_actname_w = function(){
     var activities = JSON.parse(localStorage.getItem('messages'));
-    var actname_working = _.find(activities,function(activity){return activity.actname == localStorage.working_activity})
+    var a = _.findWhere(activities,function(activity){return activity.actname == localStorage.working_activity})
+    return a
 //    actname_working.activity_status = "true"
 //    return actname_working.activity_status
-    localStorage.setItem('messages',JSON.stringify(actname_working));
+//    localStorage.setItem('messages',JSON.stringify(actname_working));
 }
 //Activity.show_activties_message= function(){
 //    var activities = JSON.parse(localStorage.getItem('messages'));

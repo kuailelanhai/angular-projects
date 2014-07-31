@@ -41,10 +41,10 @@ Creat_Activity.save_apply_end_status=function(active_name){
 }
 
 
-//Creat_Activity.show_bm_list = function(){
-//    $scope.list1 = JSON.parse(localStorage.getItem("messages"))||[];
-//    console.log($scope.list1);
-//}
+Creat_Activity.show_bm_list = function(active_name){
+    $scope.list1 = JSON.parse(localStorage.getItem("messages"))||[];
+    console.log($scope.list2);
+}
 Creat_Activity.for_actname_biddata = function(){
 
 }
