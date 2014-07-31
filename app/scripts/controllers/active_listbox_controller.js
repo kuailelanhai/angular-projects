@@ -62,6 +62,11 @@ angular.module('partyBidApp')
             $location.path('/creat_active')
             localStorage.working_activity = actname;
         }
+        function a() {
+            $scope.list1 = JSON.parse(localStorage.getItem("messages"))||[];
+            console.log($scope.list1);
+        }
+        a();
     })
 
 

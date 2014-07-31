@@ -14,70 +14,89 @@
 //        $scope.go_bid=function(){
 //            $location.path('/bid_activity')
 //        }
-//angular.module('partyBidApp')
-//    .controller('Creat_activeCtrl', function ($scope, $routeParams, $location) {
-//        $scope.activity_name = $routeParams.activity_name;
-//        $scope.list2 = Creat_Activity.get_bm_list($scope.activity_name);
-//        $scope.switch = Creat_Activity.check_activity_status($scope.activity_name);
-//        $scope.start = Creat_Activity.is_apply_able($scope.activity_name);
+angular.module('partyBidApp')
+    .controller('Creat_activeCtrl', function ($scope, $routeParams, $location) {
+        $scope.activity_name = $routeParams.activity_name;
+        $scope.success=function() {
+            $scope.list2 = Creat_Activity.get_bm_list($scope.activity_name);
+            $scope.people_number = Creat_Activity.get_bm_list.length
+        }
+        $scope.success()
+        $scope.switch = Creat_Activity.check_activity_status($scope.activity_name);
+        $scope.start = Creat_Activity.is_apply_able($scope.activity_name);
 //        $scope.people_number = Creat_Activity.get_bm_list.length
-//        $scope.return = "返回";
-//        $scope.go_return = function () {
+        $scope.return = "返回";
+        $scope.go_return = function () {
+            $location.path('/active_listbox')
+        }
+
+        $scope.begin = function () {
+            Creat_Activity.save_apply_start_status($scope.activity_name);
+            $scope.switch = 'false';
+        }
+
+        $scope.end = function () {
+            if (window.confirm('确认要结束本次报名吗？')) {
+                Creat_Activity.save_apply_end_status($scope.activity_name);
+                $scope.switch = 'true';
+                $location.path('/bid_activity' + $scope.activity_name);
+            }
+        }
+
+
+
+//angular.module('partyBidApp')
+//    .controller('Creat_activeCtrl', function ($scope,$location) {
+//        $scope.return="返回";
+//        $scope.go_return=function(){
 //            $location.path('/active_listbox')
 //        }
-//
-//        $scope.begin = function () {
-//            Creat_Activity.save_apply_start_status($scope.activity_name);
-//            $scope.switch = 'false';
+//        $scope.bid="竞价"
+//        $scope.go_bid=function(){
+//            $location.path('/bid_activity')
 //        }
-//
-//        $scope.end = function () {
-//            if (window.confirm('确认要结束本次报名吗？')) {
-//                Creat_Activity.save_apply_end_status($scope.activity_name);
-//                $scope.switch = 'true';
-//                $location.path('/bid_activity' + $scope.activity_name);
+//        if(Activity.show_activity_list){
+////            $scope.people_number = Activity.show_activity_list.apply_list.length;
+//            $scope.list2 = Activity.show_activties_message.apply_list
+//        }
+////        $scope.switch="true"
+//        console.log('++++++++++')
+//        console.log(Activity.judge_actname_w())
+//        $scope.begin = function()
+//        {
+//            $scope.switch="false"
+////            console.log(Activity.show_activity_list().activity_status)
+////            Activity.show_activity_list().activity_status = "true"
+//            console.log(Activity.judge_actname_w())
+//            Activity.judge_actname_w()
+//        }
+//        if(Activity.judge_switch){
+//            $scope.switch = "true"
+//        }
+//        else{
+//            $scope.switch = "false"
+//        }
+//        $scope.end=function(){
+//            if(confirm("确认要结束此次报名吗？")){
+//                $scope.switch='true'
+//                if(Activity.show_activity_list){
+//                    Activity.show_activity_list.activity_status = "false"
+//                    $location.path('/bid_activity')
+//                }
 //            }
+//            else{}
 //        }
-//    });
+//        if(!Activity.judge_activity_start){
+//            $scope.start = false
+//        }
+//        else{
+//            $scope.start = true
+//        }
+//        if(Activity.judge_actname_wactivity.bid_status1=="false"){
+//            $scope.switch="true"
+//            $scope.start=true
+//        }
 
-angular.module('partyBidApp')
-    .controller('Creat_activeCtrl', function ($scope,$location) {
-        if(apply_list){
-            $scope.people_number = Activity.show_activity_list.apply_list.length;
-            $scope.list2 = Activity.show_activity_list.apply_list
-        }
-        $scope.switch="false"
-        $scope.begin = function()
-        {
-            $scope.switch="false"
-            Activity.show_activity_list.data_status = "true"
-        }
-        if(Activity.judge_switch){
-            $scope.switch = "false"
-        }
-        else{
-            $scope.switch = "true"
-        }
-        $scope.end=function(){
-            if(confirm("确认要结束此次报名吗？")){
-                $scope.switch='true'
-                if(Activity.show_activity_list){
-                    Activity.show_activity_list.activity_status = "false"
-                    $location.path('/bid_activity')
-                }
-            }
-            else{}
-        }
-        if(!judge_activity_start){
-            $scope.start = false
-        }
-        else{
-            $scope.start = true
-        }
-        if(judge_actname_wactivity.bid_status1=="false"){
-            $scope.switch="true"
-            $scope.start=true
-        }
 
 //        var active=JSON.parse(localStorage.getItem("messages"));
 //         $scope.success=function() {

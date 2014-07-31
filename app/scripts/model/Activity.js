@@ -49,12 +49,24 @@ Activity.judge_actname_wactivity = function(){
     return actname_working
     localStorage.setItem('messages',JSON.stringify(actname_working));
 }
-Activity.show_activity_list = function(){
+Activity.judge_actname_w = function(){
     var activities = JSON.parse(localStorage.getItem('messages'));
-    var apply_list = _.find(activities,function(activity){return activity.actname == localStorage.working_activity})
-    return apply_list
-    localStorage.setItem('messages',JSON.stringify(apply_list));
+    var actname_working = _.find(activities,function(activity){return activity.actname == localStorage.working_activity})
+//    actname_working.activity_status = "true"
+//    return actname_working.activity_status
+    localStorage.setItem('messages',JSON.stringify(actname_working));
 }
+//Activity.show_activties_message= function(){
+//    var activities = JSON.parse(localStorage.getItem('messages'));
+//    var actname_working = _.find(activities,function(activity){return activity.actname == localStorage.working_activity})
+//    localStorage.setItem('messages',JSON.stringify(actname_working));
+//}
+//Activity.show_activity_list = function(){
+//    var activities = JSON.parse(localStorage.getItem('messages'));
+//    var apply_list = _.find(activities,function(activity){return activity.actname == localStorage.working_activity})
+//    return apply_list
+//    localStorage.setItem('messages',JSON.stringify(apply_list));
+//}
 Activity.judge_switch = function(){
     _.find(Activity.show_activity_list,function(apply_list){return Activity.show_activity_list.activity_status == 'true'})
     return true
@@ -63,5 +75,6 @@ Activity.judge_activity_start = function(){
     _.find(Activity.show_activity_list, function (a){return a.activity_status == 'true'})
     return true
 }
+
 
 
