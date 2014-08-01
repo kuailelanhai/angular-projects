@@ -29,9 +29,6 @@ angular.module('partyBidApp')
         $scope.go_register = function () {
 
             creat()
-
-//            $location.path('/creat_active')
-
         }
 
 
@@ -41,7 +38,7 @@ angular.module('partyBidApp')
 //messages.push(message.unshift(message));
 //localStorage.setItem("message",JSON.stringify(messages));
         function creat() {
-            var message = {'actname': $scope.activity, 'activity_status': 'false', 'apply_list': [],'bid_data': [],bid_status:'false',status:'false','bid_list':[],'bid_result':[],'bid_price':[]};
+            var message = {'actname': $scope.activity, 'activity_status': 'false', 'apply_list': [],'bid_data': [],bid_status:'false',status:'false','bid_result':[],'bid_price':[],'bidding':[]};
             var messages = JSON.parse(localStorage.getItem("messages")) || [];
 
             var if_same
@@ -78,6 +75,28 @@ angular.module('partyBidApp')
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+angular.module('angularApp')
+    .controller('MainCtrl', function ($scope) {
+        $scope.create = function () {
+            var activities = JSON.parse(localStorage.getItem("messages")) || [];
+            Activity.judge_check_rename($scope)
+        }
+        $scope.show = Activity.check_activity_list_exist()
+    });
 
 
 

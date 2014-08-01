@@ -85,6 +85,30 @@ angular.module('partyBidApp')
 
 
 
+/**
+ * Created by tlt on 14-6-21.
+ */
+//angular.module('angularApp')
+//    .controller('Active_listboxCtrl', function ($scope, $location) {
+//        $scope.bm = function (actname) {
+//            $location.path('/creat_active')
+//            Activity.save_click_activity(activity)
+//        }
+//        $scope.list1 = Activity.get_activities()
+//        if (!Activity.check_activity_list_exist()) {
+//            $location.path('/main')
+//        }
+//    }
+//)
+
+
+
+
+
+
+
+
+
 
 
 

@@ -22,32 +22,42 @@
         /**
          * Created by voctor on 14-6-17.
          */
-        'use strict';
-        angular.module('partyBidApp')
-            .controller('Bid_activityCtrl',function ($scope,$routeParams,$location) {
-                $scope.by="返回";
-                $scope.go_by=function(){
-                    $location.path('/active_listbox')
-                }
-                $scope.jj=function(bid_name){
-                    $location.path('/bid_list')
-                    localStorage.working_bid = bid_name;
-                }
-                $scope.activity_name=$routeParams.activity_name;
-                Bid.save_current_activity($scope.activity_name);
-                $scope.flag=Bid.is_bid_able($scope.activity_name);
-                $scope.bids=Bid.get_bid_list($scope.activity_name);
-                $scope.activities=Activity.get_activity_list();
-
-                $scope.bid_start=function () {
-                    Bid.save_bid_start_status($scope.activity_name);
-                    var bid_name=Bid.creat_bid_name($scope.activity_name);
-                    var bid_info=new Bid(bid_name);
-                    bid_info.add_bid_info($scope.activity_name);
-                    $location.path('bidapply/'+bid_name);
-                }
-
-            });
+//        'use strict';
+//        angular.module('partyBidApp')
+//            .controller('Bid_activityCtrl',function ($scope,$routeParams,$location) {
+//                $scope.by="返回";
+//                $scope.go_by=function(){
+//                    $location.path('/active_listbox')
+//                }
+//                $scope.jj=function(bid_name){
+//                    $location.path('/bid_list')
+//                    localStorage.working_bid = bid_name;
+//                }
+//                Bid.save_bid_status_bid_message()
+//                Bid.judge_check_bid_status($scope)
+//                $scope.bids = Bid.check_current_activity_bid_list()
+//                Bid.judge_check_activity_status_length($scope)
+//                $scope.jj = function (bid_name) {
+//                    $location.path('/bid_list')
+//                    localStorage.working_bid = bid_name
+//                }
+//                $scope.activity_name=$routeParams.activity_name;
+////                Bid.save_current_activity($scope.activity_name);
+////                $scope.begin=Bid.is_bid_able($scope.activity_name);
+////                $scope.bids=Bid.get_bid_list($scope.activity_name);
+//                $scope.activities=Activity.get_activity_list();
+//
+//                $scope.start=function () {
+//                    Bid.save_bid_start_status($scope.activity_name);
+//                    var bid_name=Bid.save_bid_status_bid_message()
+//                    var bid_info=new Bid(bid_name);
+//                    bid_info.add_bid_info($scope.activity_name);
+//                    $location.path('/bid_list');
+////                    $location.path('/bid_list'+bid_name);
+//                    Bid.save_bid_status_bid_message()
+//                }
+//
+//            });
 
 
 ////        $scope.start_bid=localStorage.getItem(("bid_status"))
@@ -91,7 +101,7 @@
 //                    console.log(a[j].bid_data)
 //                    $scope.bids = a[j].bid_data
 ////                for(j in bid_status)
-////                $scope.bids=active[i].bid_status[j].bid_name
+//                $scope.bids=active[i].bid_status[j].bid_name
 //                }
 //            }
 //        }
@@ -171,3 +181,95 @@
 //
 //
 //            });
+
+'use strict';
+angular.module('partyBidApp')
+    .controller('Bid_activityCtrl',function ($scope,$routeParams,$location) {
+        $scope.by="返回";
+        $scope.go_by=function(){
+            $location.path('/active_listbox')
+        }
+        $scope.jj=function(bid_name){
+            $location.path('/bid_list')
+            localStorage.working_bid = bid_name;
+        }
+        Bid.judge_check_bid_status($scope)
+        $scope.bids = Bid.check_current_activity_bid_list()
+        Bid.judge_check_activity_status_length($scope)
+        $scope.jj = function (bid_name) {
+            $location.path('/bid_list')
+            localStorage.working_bid = bid_name
+        }
+        $scope.activity_name=$routeParams.activity_name;
+//                Bid.save_current_activity($scope.activity_name);
+//                $scope.begin=Bid.is_bid_able($scope.activity_name);
+//                $scope.bids=Bid.get_bid_list($scope.activity_name);
+        $scope.activities=Activity.get_activity_list();
+
+        $scope.start=function () {
+            Bid.save_bid_start_status($scope.activity_name);
+            var bid_name=Bid.save_bid_status_bid_message
+//            var bid_info=new Bid(bid_name);
+//            bid_info.add_bid_info($scope.activity_name);
+            console.log(Bid.save_bid_status_bid_message)
+            console.log('+++++')
+            var a = JSON.parse(localStorage.getItem("messages"));
+            $location.path('/bid_list');
+            $scope.bids = bid_name
+//                    $location.path('/bid_list'+bid_name);
+            Bid.save_bid_status_bid_message()
+        }
+
+    });
+
+
+//angular.module('angularApp')
+//    .controller('Bid_activityCtrl', function ($scope, $location) {
+//        $scope.awesomeThings = [
+//            'HTML5 Boilerplate',
+//            'AngularJS',
+//            'Karma'
+//        ];
+//        Bid.judge_check_bid_status($scope)
+//        $scope.bids = Bid.check_current_activity_bid_list()
+//        Bid.judge_check_activity_status_length($scope)
+//        $scope.jj = function (bid_name) {
+//            $location.path('/bid_list')
+//            localStorage.working_bid = bid_name
+//        }
+//        $scope.by="返回";
+//        $scope.go_by=function(){
+//            $location.path('/active_listbox')
+//        }
+//        $scope.start = function () {
+//            var bid_name=Bid.save_bid_status_bid_message()
+//            console.log(Bid.save_bid_status_bid_message())
+//            console.log('++++++')
+//            $scope.bids=Bid.save_bid_status_bid_message()
+////            $location.path('/bid_list')
+//            $location.path('/bid_list');
+//            Bid.save_bid_status_bid_message()
+//        }
+//    });
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -55,8 +55,8 @@ Activity.judge_actname_wactivity = function(){
 }
 Activity.judge_actname_w = function(){
     var activities = JSON.parse(localStorage.getItem('messages'));
-    var a = _.findWhere(activities,function(activity){return activity.actname == localStorage.working_activity})
-    return a
+ _.findWhere(activities,function(activity){return activity.actname == localStorage.working_activity})
+    localStorage.setItem('messages',JSON.stringify(activities));
 //    actname_working.activity_status = "true"
 //    return actname_working.activity_status
 //    localStorage.setItem('messages',JSON.stringify(actname_working));
@@ -83,3 +83,69 @@ Activity.judge_activity_start = function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Created by tlt on 14-7-16.
+ */
+function Activity (name){
+    this.actname=name;
+    this.activity_status='false';
+    this.apply_list=[];
+    this.bid_status='false';
+    this.bid_list=[]
+}
+Activity.check_activity_list_exist=function(){
+    return localStorage.getItem('messages')
+}
+Activity.prototype.save_message=function(){
+    var activities = JSON.parse(localStorage.getItem("messages")) || [];
+    activities.unshift(this)
+    localStorage.setItem("messages", JSON.stringify(activities))
+}
+Activity.save_current_activity=function(){
+    var activities = JSON.parse(localStorage.getItem('messages'))
+    localStorage.working_activity = activities[0].actname
+}
+Activity.save_click_activity=function(activity){
+    var activities = JSON.parse(localStorage.getItem('messages'))
+    localStorage.working_activity = activity
+}
+Activity.get_activities=function(){
+    return JSON.parse(localStorage.getItem('messages'))
+}
+Activity.check_rename=function($scope){
+    var activities = JSON.parse(localStorage.getItem("messages")) || [];
+    return(_.find(activities, function (act) {
+        return act.actname == $scope.activity
+    }))
+}
+Activity.judge_check_rename=function($scope){
+    var activity = new Activity($scope.activity);
+    if(Activity.check_rename($scope)){
+        $scope.hide = 1
+    }
+
+    if(!Activity.check_rename($scope)){
+        activity.save_message()
+        Activity.save_current_activity()
+        //  $location.path('bidding')
+    }
+}

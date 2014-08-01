@@ -255,3 +255,34 @@ angular.module('partyBidApp')
 //        }
 
                 });
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Created by tlt on 14-7-15.
+ */
+angular.module('angularApp')
+    .controller('Price_resultCtrl', function ($scope, $location) {
+        localStorage.status = true
+        $scope.refreshes = function () {
+            var bid_price = JSON.parse(localStorage.getItem("bid_price"))
+            var bidding=Bid.check_current_activity_bid()
+            $scope.activity_bid=localStorage.working_bid
+            $scope.biddings=bid_price
+            $scope.people_number1=bidding.length
+            Bid.judge_check_bid_price_bid_count_current_activity_bid_messages_bid_price($scope)
+        }
+        $scope.refreshes()
+        $scope.go_return = function () {
+            localStorage.status == false
+            $location.path('/bid_list')
+        }
+    });

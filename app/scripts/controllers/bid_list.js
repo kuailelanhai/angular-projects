@@ -197,3 +197,50 @@ angular.module('partyBidApp')
 
 
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+angular.module('angularApp')
+    .controller('Bid_listCtrl', function ($scope, $location) {
+        $scope.awesomeThings = [
+            'HTML5 Boilerplate',
+            'AngularJS',
+            'Karma'
+        ];
+        $scope.return="返回"
+        $scope.go_return=function(){
+            $location.path('/bid_activity')
+        }
+        $scope.break = function () {
+            $scope.activity_bid = Bid.check_current_activity_bid()
+            $scope.people_number1 = Bid.check_current_activity_bid().length
+            $scope.activity_bid = localStorage.working_bid
+        }
+//        $scope.break();
+        $scope.switch = 'false'
+        Bid.check_bid_start($scope)
+        $scope.end = function () {
+            if (confirm("确定要结束吗")) {
+                Bid.check_current_activity_save_bid_color()
+                $location.path('/result_price')
+            }
+        }
+        $scope.go_return = function () {
+            $location.path('/bid_activity')
+        }
+    })

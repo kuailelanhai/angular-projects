@@ -28,11 +28,18 @@ Creat_Activity.is_apply_able=function(active_name){
     return false;
 }
 
-Creat_Activity.save_apply_start_status=function(active_name){
+Creat_Activity.save_apply_start_status=function(){
     var activity=JSON.parse(localStorage.getItem('messages'));
-    _.findWhere(activity,{name:active_name}).activity_status='true';
+    _.findWhere(activity,{actname:localStorage.working_activity}).activity_status='true';
     localStorage.setItem('messages',JSON.stringify(activity));
 }
+Creat_Activity.change_result_status = function(){
+    var activity = JSON.parse(localStorage.getItem('messages'));
+    if(_.findWhere(activity,{actname:localStorage.working_activity}))
+        return true
+    localStorage.setItem('messages',JSON.stringify(activity))
+}
+
 
 Creat_Activity.save_apply_end_status=function(active_name){
     var activity=JSON.parse(localStorage.getItem('messages'));

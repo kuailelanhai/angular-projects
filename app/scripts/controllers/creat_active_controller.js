@@ -20,8 +20,10 @@ angular.module('partyBidApp')
         $scope.success=function() {
             Activity.judge_actname_w()
             console.log(Activity.judge_actname_w)
+            console.log('==============')
             $scope.list2 = Creat_Activity.get_bm_list();
             $scope.people_number = Creat_Activity.get_bm_list().length
+            console.log(Activity.judge_actname_w())
         }
         $scope.success()
         Activity.judge_actname_w()
@@ -34,15 +36,19 @@ angular.module('partyBidApp')
         }
 
         $scope.begin = function () {
-            Creat_Activity.save_apply_start_status($scope.activity_name);
-            $scope.switch = 'false';
+            Creat_Activity.save_apply_start_status();
+            console.log(Creat_Activity.save_apply_start_status())
+            if(Creat_Activity.change_result_status()) {
+                $scope.switch = 'false';
+            }
         }
 
         $scope.end = function () {
             if (window.confirm('确认要结束本次报名吗？')) {
                 Creat_Activity.save_apply_end_status($scope.activity_name);
                 $scope.switch = 'true';
-                $location.path('/bid_activity' + $scope.activity_name);
+                $location.path('/bid_activity');
+//                $location.path('/bid_activity' + $scope.activity_name);
             }
         }
 //        if(!Activity.judge_activity_start){
@@ -213,3 +219,51 @@ angular.module('partyBidApp')
 
 
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Created by tlt on 14-6-21.
+ */
+//angular.module('angularApp')
+//    .controller('Creat_activeCtrl', function ($scope, $location) {
+//        $scope.use = function () {
+//            $scope.list2 = Bid.get_apply_list(localStorage.working_activity)
+//        }
+//        $scope.use();
+//        $scope.end = function () {
+//            if (confirm("你确定结束吗")) {
+//                $scope.switch = "true"
+//                Bid.save_activity_status_false(localStorage.working_activity)
+//                $scope.start = false
+//                $location.path('bid_activity')
+//            }
+//        }
+//        $scope.begin = function () {
+//            $scope.switch = "false"
+//            Bid.save_activity_status(localStorage.working_activity)
+//        }
+//        $scope.switch = "true"
+//        Bid.judege_check_current_activity_activity_status($scope)
+//        Bid.judge_check_bid_status_activity_status($scope)
+//    }
+//)
