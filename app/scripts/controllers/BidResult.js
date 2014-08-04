@@ -7,7 +7,7 @@ function bid_result_page_load() {
     console.log('++++----')
 }
 angular.module('partyBidApp')
-    .controller('BidResultCtrl',function ($scope,$routeParams,$location) {
+    .controller('BidResultCtrl',function ($scope,$routeParams,$location,$timeout) {
         $scope.activity_name=$routeParams.activity_name;
         Bid.save_current_bid($scope.activity_name)
         console.log($scope.activity_name)
