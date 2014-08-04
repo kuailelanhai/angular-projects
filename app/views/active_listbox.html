@@ -1,0 +1,18 @@
+
+<header>
+    活动列表
+
+    <div class="header-right">
+        <a class="btn-style btn-4"  ng-click="go_creat()">创建活动</a>
+    </div>
+</header>
+<!--<p> {{list}}</p>-->
+
+<ul>
+    <div id="wrapper" class="wrapper scrollable">
+        <ul class="list-style-2">
+    <li class="{{phone.activity_status}} || {{phone.bid_status}}" ng-click="bm(phone.actname)" ng-repeat="phone in list1">
+        <h1>{{phone.actname}}       </h1>
+            </ul>
+        </div>
+</ul>

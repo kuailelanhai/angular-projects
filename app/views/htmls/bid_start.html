@@ -1,34 +1,34 @@
 <header>
-  竞价
-  <div class='header-left'>
-    <a class='btn-style btn-4' href='#/'>返回</a>
-  </div>
-  <div class='header-right'>
-    <button class='btn btn-style btn-4' ng-click='bid_start()' ng-disabled='flag'>开始</button>
-  </div>
+    竞价
+    <div class='header-left'>
+        <a class='btn-style btn-4' href='#/'>返回</a>
+    </div>
+    <div class='header-right'>
+        <button class='btn btn-style btn-4' ng-click='bid_start()' ng-disabled='flag'>开始</button>
+    </div>
 </header>
 <div class='wrapper scrollable' id='wrapper'>
-  <ul class='list-style-2'>
-    <li class='{{bid.bidstyle}}' ng-repeat='bid in bids'>
-      <a href='#/bidapply/{{bid.bidname}}'>
-        <h1>
-          {{bid.bidname}}
-        </h1>
-      </a>
-    </li>
-  </ul>
+    <ul class='list-style-2'>
+        <li class='{{bid.bidstyle}}' ng-repeat='bid in bids'>
+            <a href='#/bidapply/{{bid.bidname}}'>
+                <h1>
+                    {{bid.bidname}}
+                </h1>
+            </a>
+        </li>
+    </ul>
 </div>
 <footer>
-  <ul class='footer-nav footer-nav-2tabs'>
-    <li>
-      <a href='#/apply/{{activity_name}}'>
-        报名
-      </a>
-    </li>
-    <li class='active'>
-      <a href=''>
-        竞价
-      </a>
-    </li>
-  </ul>
+    <ul class='footer-nav footer-nav-2tabs'>
+        <li>
+            <a href='#/apply/{{activity_name}}'>
+                报名
+            </a>
+        </li>
+        <li class='active'>
+            <a href=''>
+                竞价
+            </a>
+        </li>
+    </ul>
 </footer>

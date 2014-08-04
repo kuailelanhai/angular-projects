@@ -26,6 +26,12 @@ angular.module('partyBidApp')
         $scope.price = Bid.get_bid_show3($scope.activity_name,$scope.bid_name)
 //        var bid_name=Bid.creat_bid_name($scope.activity_name);
         console.log(Bid.get_bid_show($scope.activity_name,$scope.bid_name))
+        $timeout(function () {
+            $('#ModalSuccess').modal("show");
+            $timeout(function () {
+                $('#ModalSuccess').modal('hide');
+            }, 3000)
+        })
     })
 
 

@@ -1,6 +1,4 @@
-/**
- * Created by voctor on 14-6-22.
- */
+
 'use strict';
 
 angular.module('partyBidApp')

@@ -1,25 +1,25 @@
 <script>
-  bid_result_page_load();
+    bid_result_page_load();
 </script>
 <header>
-  竞价({{bid_name}})({{bid_length}}人)
-  <div class='header-left'>
-    <a class='btn-style btn-4' href='' id='goback/{{activity_name}}'>返回</a>
-  </div>
+    竞价({{bid_name}})({{bid_length}}人)
+    <div class='header-left'>
+        <a class='btn-style btn-4' href='' id='goback/{{activity_name}}'>返回</a>
+    </div>
 </header>
 <div class='wrapper scrollable' id='wrapper'>
-  <ul class='list-style-2' id='bidlist'>
-    <li ng-repeat='bid in bids'>
-      <div style=' float:left width:50%'>
-        <h1>
-          {{bid.bider}} {{bid.phone}}
-          <div style='float:right'>
-            ￥{{bid.price}}
-          </div>
-        </h1>
-      </div>
-    </li>
-  </ul>
+    <ul class='list-style-2' id='bidlist'>
+        <li ng-repeat='bid in bids'>
+            <div style=' float:left width:50%'>
+                <h1>
+                    {{bid.bider}} {{bid.phone}}
+                    <div style='float:right'>
+                        ￥{{bid.price}}
+                    </div>
+                </h1>
+            </div>
+        </li>
+    </ul>
 </div>
 <div id="ModalSuccess" class="modal fade">
     <div class="modal-dialog">
@@ -34,19 +34,19 @@
 </div>
 
 <footer>
-<div>
-    <ul ng-hide="show_bid"><h1>{{bider}} {{phone}} ￥{{price}} 竞价成功</h1></ul>
-</div>
-<div class='footer-nav footer-nav-2tabs'>
-    <li class='active'>
-      <a href='/#/bidresult/{{activity_name}}'>
-        竞价结果
-      </a>
-    </li>
-    <li>
-      <a href='#/bidstatistics'>
-        价格统计
-      </a>
-    </li>
-</div>
+    <div>
+        <ul ng-hide="show_bid"><h1>{{bider}} {{phone}} ￥{{price}} 竞价成功</h1></ul>
+    </div>
+    <div class='footer-nav footer-nav-2tabs'>
+        <li class='active'>
+            <a href='/#/bidresult/{{activity_name}}'>
+                竞价结果
+            </a>
+        </li>
+        <li>
+            <a href='#/bidstatistics'>
+                价格统计
+            </a>
+        </li>
+    </div>
 </footer>

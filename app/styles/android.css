@@ -78,14 +78,13 @@ header {
 	width:100%;
 	height:45px;
 	line-height:45px;
-	background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #0079c8), color-stop(1, #0067b6));
+	background:#0000FF;
 	box-shadow: 0px 0px 3px 0px rgba(0,0,0, .8);
 	padding:0;
 	color:#fff;
 	font-size:16px;
 	text-align:center;
 	-webkit-transition: all 0.3s ease;
-    background:#0044cc;
 }
 
 .header-left {
@@ -137,15 +136,14 @@ footer {
 
 .footer-nav li a {
 	display: block;
-	padding:12px 0;
+	padding:6px 0;
 	text-align: center;
 	color: #fff;
-	font-size: 18px;
+	font-size: 12px;
 	font-weight: normal;
 	text-shadow: #222 -1px -1px;
 	text-decoration: none;
-	background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #3d3d3d), color-stop(1, #272727));
-    background:#3d3d3d ;
+	background:#040404;
 }
 
 .footer-nav li:hover a, .footer-nav li:active a, .footer-nav li.active a {
@@ -154,7 +152,6 @@ footer {
 	border-left: none;
 	border-right: none;
 	background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #242424), color-stop(1, #242424));
-    background:#272727 ;
 }
 
 .footer-nav li a i {
@@ -230,7 +227,7 @@ footer {
 }
 
 .brand {
-	background-image: url(../img/logo.png);
+
 	background-size: 153px 119px;
 	width: 153px;
 	height: 119px;
@@ -241,7 +238,7 @@ footer {
 }
 
 .logo-flat {
-	background-image: url(../img/logo-flat.png);
+
 	background-size: 84px 67px;
 	width: 84px;
 	height: 67px;
@@ -372,7 +369,6 @@ footer {
 	color: #fff;
 	border: 1px solid #0e49a2;
 	box-shadow: 0px 1px 1px 0px rgba(0,0,0, .4);
-    background:#0088ff;
 }
 
 .btn-2:hover {
@@ -740,7 +736,9 @@ footer {
 	-webkit-text-fill-color: transparent;
 }
 
-
+.true{
+    background: #ffff00 !important;
+}
 
 
 
