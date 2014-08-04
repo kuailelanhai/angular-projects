@@ -4,13 +4,13 @@
     <a class='btn-style btn-4' href='#/activitycreate'>创建活动</a>
   </div>
 </header>
-<div class='wrapper scrollable' id='wrapper'>
+<div id='wrapper' class='wrapper scrollable'>
   <ul class='list-style-2'>
     <li class='{{activity.applystatus}} {{activity.bidstatus}}' ng-repeat='activity in activities'>
       <a href='#/apply/{{activity.name}}'>
-        <h3>
+        <h1>
           {{activity.name}}
-        </h3>
+        </h1>
       </a>
     </li>
   </ul>

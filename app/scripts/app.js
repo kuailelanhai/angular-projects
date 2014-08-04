@@ -30,11 +30,13 @@ angular
                 templateUrl: 'views/htmls/bid_apply.html',
                 controller: 'BidApplyCtrl'
             })
-            .when('/bidresult', {
-                templateUrl: 'views/htmls/bid_result.html'
+            .when('/bidresult/:activity_name', {
+                templateUrl: 'views/htmls/bid_result.html',
+                controller: 'BidResultCtrl'
             })
             .when('/bidstatistics', {
-                templateUrl: 'views/htmls/bid_statistics.html'
+                templateUrl: 'views/htmls/bid_statistics.html',
+                controller: 'BidStatisticsCtrl'
             })
             .otherwise({
                 redirectTo: '/'

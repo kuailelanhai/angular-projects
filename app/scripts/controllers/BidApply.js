@@ -14,7 +14,7 @@ angular.module('partyBidApp')
                 Bid.save_bid_end_status($scope.activity_name);
                 Bid.save_bid_style($scope.activity_name);
                 $scope.flag=true;
-                $location.path('bidresult');
+                $location.path('bidresult/'+$scope.activity_name);
             }
 
         }
