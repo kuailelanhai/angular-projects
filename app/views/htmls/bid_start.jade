@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+#bid_list
+    header
+        竞价
+        .header-right
+            button.btn-style.btn-4( ng-click="start()" ng-disabled="begin") 开始
+        .header-left
+            button.btn-style.btn-4( ng-click="go_by()") 返回
+            #wrapper.wrapper.scrollable
+        div.ng-scope
+            ul.list-style-2
+                li(ng-repeat="bid in bids" ng-click="jj(bid.bid_name)" class="{{bid.bid_color}}")
+                    h1 {{bid.bid_name}}
+                //class="{{localStoage.bid_status"}}"
+            footer
+        ul.footer-nav.footer-nav-2tabs
+            li.active
+                a(href='#/creat_active') 报名
+            li
+                a(href='#/bid_list') 竞价

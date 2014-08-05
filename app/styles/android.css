@@ -736,11 +736,15 @@ footer {
 	-webkit-text-fill-color: transparent;
 }
 
-.true{
+.applystart{
     background: #ffff00 !important;
 }
-
-
+.bidstart{
+    background: #ffff00 !important;
+}
+.biding{
+    background: #ffff00 !important;
+}
 
 
 

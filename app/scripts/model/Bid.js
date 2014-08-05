@@ -85,6 +85,17 @@ Bid.add_apply_name_into_bid_message=function(activity_list,bid_messages,activity
     })});
     return bid_messages;
 }
+Bid.judge_bid = function(){
+    var activity_list=JSON.parse(localStorage.getItem('activitylist'))
+    var current_activity=Bid.get_current_activity();
+    var current_bid=Bid.get_current_bid()
+    var bid_list= _.findWhere(activity_list,{name:current_activity}).bidlist;
+    console.log(bid_list)
+    var bid_message = _.findWhere(bid_list,{bidname:current_bid})
+    console.log('----==++')
+    console.log(bid_message)
+    return bid_message.length == 0
+}
 Bid.show_message = function(activity_name,bid_name){
     var activity_list=JSON.parse(localStorage.getItem('activitylist'));
     var bid_list=_.findWhere(activity_list,{name:activity_name}).bidlist;
@@ -117,96 +128,89 @@ Bid.is_biding=function(){
     return false;
 }
 Bid.bid_show_messages = function(){
-    var a = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
     var current_activity=Bid.get_current_activity();
-    var b = _.findWhere(a,{name:current_activity}).bidlist;
-    return b
+    var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
+    return bid_name
 }
 Bid.bid_show_messages1 = function(){
-    var a = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
     var current_activity=Bid.get_current_activity();
     var current_bid = Bid.get_current_bid();
-    var b = _.findWhere(a,{name:current_activity}).bidlist;
-    var c = _.findWhere(b,{bidname:current_bid})
-    return c
+    var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
+    var current_bid_name = _.findWhere(bid_name,{bidname:current_bid})
+    return current_bid_name
 }
 Bid.bid_show_messages2 = function(activity_name,bid_name){
     console.log(bid_name)
-    var a = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
-    var b = _.findWhere(a,{name:current_activity}).bidlist;
-    var c = _.findWhere(a,{name:current_activity}).applylist
-    var d = _.findWhere(b,{bidname: current_bid}).bidapplylist
-    _.each(c,function(e){_.each(d,function(f){
-        if(e.phone == f.phone){
-            var messages = {phone:e.phone,bider:e.applyname,price: f.price}
-            var g = _.findWhere(b,{bidname: current_bid}).bidapp
-            g.push(messages)
-            console.log('++========')
-            console.log(g)
-            console.log('--------')
-            console.log(a)
-            localStorage.setItem('activitylist',JSON.stringify(a))
+    var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
+    var apply_name = _.findWhere(activity_list,{name:current_activity}).applylist
+    var bid_apply_name = _.findWhere(bid_name,{bidname: current_bid}).bidapplylist
+    _.each(apply_name,function(applytip){_.each(bid_apply_name,function(bid_applylist){
+        if(applytip.phone == bid_applylist.phone){
+            var messages = {phone:applytip.phone,bider:applytip.applyname,price: bid_applylist.price,color: 'false'}
+            var bid_app_message = _.findWhere(bid_name,{bidname: current_bid}).bidapp
+            bid_app_message.push(messages)
+            localStorage.setItem('activitylist',JSON.stringify(activity_list))
         }
     })})
 }
 Bid.bid_show_messages3 = function(){
-    var a = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
     var current_activity=Bid.get_current_activity();
-    var b = _.findWhere(a,{name:current_activity}).bidlist;
-    var e = Bid.get_current_bid()
-    var c = _.findWhere(b,{bidname: e}).bidapp
-    return c
+    var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
+    var current_name = Bid.get_current_bid()
+    var bid_app_message = _.findWhere(bid_name,{bidname: current_name}).bidapp
+    return bid_app_message
+}
+Bid.jj_color = function(){
+
 }
 Bid.get_bid_show = function(activity_name,bid_name){
-    var a = JSON.parse(localStorage.getItem(('activitylist')))
+    var activity_list = JSON.parse(localStorage.getItem(('activitylist')))
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
-    var b = _.findWhere(a,{name:current_activity}).bidlist;
-    console.log(b)
-    var g = _.findWhere(b,{bidname: current_bid}).bidapp
-    g = _.sortBy(g,function(num){
+    var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
+    console.log(bid_name)
+    var price_count = _.findWhere(bid_name,{bidname: current_bid}).bidapp
+    price_count = _.sortBy(price_count,function(num){
         return num.price
     })
-    console.log(g)
-    return g
+    return price_count
 }
 Bid.get_bid_show1 = function(activity_name,bid_name){
-    var a = JSON.parse(localStorage.getItem(('activitylist')))
+    var activity_list = JSON.parse(localStorage.getItem(('activitylist')))
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
-    console.log(activity_name)
-    console.log(bid_name)
-    console.log('------====+++')
-    var b = _.findWhere(a,{name:current_activity}).bidlist;
-    console.log(a)
-    console.log(b)
-    var g = _.findWhere(b,{bidname: current_bid}).bidapp
+    var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
+    var bid_app_message = _.findWhere(bid_name,{bidname: current_bid}).bidapp
 //    var h = _.last(g).bider
-    console.log(_.findWhere(b,{bidname: current_bid}))
-    var h = _.first(g).bider
-    return h
+    console.log(_.findWhere(bid_name,{bidname: current_bid}))
+    var app_bider = _.first(bid_app_message).bider
+    return app_bider
 }
 Bid.get_bid_show2 = function(activity_name,bid_name){
-    var a = JSON.parse(localStorage.getItem(('activitylist')))
+    var activity_list = JSON.parse(localStorage.getItem(('activitylist')))
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
-    var b = _.findWhere(a,{name:current_activity}).bidlist;
-    var g = _.findWhere(b,{bidname: current_bid}).bidapp
+    var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
+    var bid_app_message = _.findWhere(bid_name,{bidname: current_bid}).bidapp
 //    var h = _.last(g).phone
-    var h = _.first(g).phone
-    return h
+    var app_phone = _.first(bid_app_message).phone
+    return app_phone
 }
 Bid.get_bid_show3 = function(activity_name,bid_name){
-    var a = JSON.parse(localStorage.getItem(('activitylist')))
+    var activity_list = JSON.parse(localStorage.getItem(('activitylist')))
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
-    var b = _.findWhere(a,{name:current_activity}).bidlist;
-    var g = _.findWhere(b,{bidname: current_bid}).bidapp
+    var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
+    var bid_app_message = _.findWhere(bid_name,{bidname: current_bid}).bidapp
 //    var h = _.last(g).price
-    var h = _.first(g).price
-    return h
+    var app_price = _.first(bid_app_message).price
+    return app_price
 }
 //Bid.compare_price = function(activity_name,bid_name){
 //    var action = JSON.parse(localStorage.getItem('activitylist'))

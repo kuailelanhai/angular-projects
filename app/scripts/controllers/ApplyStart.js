@@ -12,10 +12,14 @@ angular.module('partyBidApp')
         $scope.applies = Apply.get_apply_list($scope.activity_name);
         $scope.switch = Apply.check_apply_status($scope.activity_name);
         $scope.flag = Apply.is_apply_able($scope.activity_name);
+        console.log(Activity.get_activity_local())
+        console.log('----------')
 
         $scope.apply_start = function () {
             Apply.save_apply_start_status($scope.activity_name);
             $scope.switch = 'end';
+
+
         }
 
         $scope.apply_end = function () {

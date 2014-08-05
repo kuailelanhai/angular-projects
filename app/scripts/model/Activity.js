@@ -15,11 +15,12 @@ Activity.prototype.add_activity = function (repeat) {
         localStorage.setItem('activitylist', JSON.stringify(activity_list));
     }
 }
-
 Activity.prototype.check_activity_repeat = function (activities) {
     return _.contains(activities,this.name);
 }
-
+Activity.get_activity_local = function(){
+    return activity_list = JSON.parse(localStorage.getItem('activitylist'));
+}
 Activity.get_activitise = function () {
     var activity_list = JSON.parse(localStorage.getItem('activitylist'));
     var activities = [];
