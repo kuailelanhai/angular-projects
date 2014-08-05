@@ -3,12 +3,13 @@
  */
 angular.module('partyBidApp')
     .controller('BidStatisticsCtrl',function ($scope,$routeParams,$location) {
-        $scope.bid_name=$routeParams.bid_name;
-        $scope.activity_name = '11111'
-        $scope.bider = 123
+//        $scope.bid_name=$routeParams.bid_name;
+        $scope.bid_name=Bid.get_current_bid()
+        $scope.activity_name=Bid.get_current_activity()
         console.log($scope.bider)
         console.log('123')
         console.log(Bid.get_current_activity())
+        Bid.bid_jj_message()
         $scope.bids_length = Bid.bid_show_messages3().length
         $scope.bid = Bid.get_current_bid()
         $scope.bider = Bid.get_bid_show1($scope.activity_name,$scope.bid_name)

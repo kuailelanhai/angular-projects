@@ -4,7 +4,6 @@
 function bid_result_page_load() {
     var current_activity = Bid.get_current_activity();
     $('#goback').attr('href', '#/bidlist/' + current_activity);
-    console.log('++++----')
 }
 angular.module('partyBidApp')
     .controller('BidResultCtrl',function ($scope,$routeParams,$location,$timeout) {
@@ -16,7 +15,9 @@ angular.module('partyBidApp')
 //        $scope.activity_name=Bid.get_current_activity();
         show_bid = false
         console.log(Bid.bid_show_messages1())
-        console.log(Bid.bid_show_messages2($scope.activity_name,$scope.bid_name))
+        $scope.bids = Bid.get_bid_show($scope.activity_name,$scope.bid_name)
+        if($scope.bids == 0){
+        console.log(Bid.bid_show_messages2($scope.activity_name,$scope.bid_name))}
 //        $scope.bid_name=Bid.bid_show_messages2($scope.activity_name,$scope.bid_name)
         $scope.bid_length = Bid.bid_show_messages3().length
         console.log(Bid.bid_show_messages())
@@ -24,6 +25,7 @@ angular.module('partyBidApp')
         $scope.bider = Bid.get_bid_show1($scope.activity_name,$scope.bid_name)
         $scope.phone = Bid.get_bid_show2($scope.activity_name,$scope.bid_name)
         $scope.price = Bid.get_bid_show3($scope.activity_name,$scope.bid_name)
+//        if($scope.bids == null){
 //        var bid_name=Bid.creat_bid_name($scope.activity_name);
         console.log(Bid.get_bid_show($scope.activity_name,$scope.bid_name))
         $timeout(function () {

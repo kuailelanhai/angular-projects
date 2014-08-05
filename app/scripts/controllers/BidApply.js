@@ -12,6 +12,7 @@ angular.module('partyBidApp')
                 Bid.save_bid_end_status($scope.activity_name);
                 Bid.save_bid_style($scope.activity_name);
                 $scope.flag=true;
+//                Bid.bid_show_messages2($scope.activity_name,$scope.bid_name)
                 $location.path('bidresult/'+$scope.activity_name);
             }
 
