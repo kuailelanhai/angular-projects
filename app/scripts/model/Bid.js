@@ -8,52 +8,52 @@ function Bid(bid_name){
     this.bidapp=[];
 }
 Bid.prototype.add_bid_info=function(activity_name){
-    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     _.findWhere(activity_list,{name:activity_name}).bidlist.push(this);
-    localStorage.setItem('activitylist',JSON.stringify(activity_list));
+    Activity.storage_activity_local()
 }
 Bid.check_bid_status=function(activity_name){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     if(_.findWhere(activity_list,{name:activity_name}).bidstatus=='bidend')
         return 'start';
     return 'end';
 }
 
 Bid.is_bid_able=function(activity_name){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     if(_.find(activity_list,function(act){return act.name==activity_name&&(act.applylist.length==0||act.applystatus=='applystart'||act.bidstatus=='bidstart')}))
         return true;
     return false;
 }
 
 Bid.save_bid_start_status=function(activity_name){
-    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     _.findWhere(activity_list,{name:activity_name}).bidstatus='bidstart';
-    localStorage.setItem('activitylist',JSON.stringify(activity_list));
+    Activity.storage_activity_local()
 }
 
 Bid.save_bid_end_status=function(activity_name){
-    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     _.findWhere(activity_list,{name:activity_name}).bidstatus='bidend';
-    localStorage.setItem('activitylist',JSON.stringify(activity_list));
+    Activity.storage_activity_local()
 }
 Bid.creat_bid_name=function(activity_name){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var bid_list=_.findWhere(activity_list,{name:activity_name}).bidlist;
     if(bid_list.length==0)
         return '竞价1';
     return '竞价'+(bid_list.length+1);
 }
 Bid.get_bid_list=function(activity_name){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var bid_list=_.findWhere(activity_list,{name:activity_name}).bidlist;
     return bid_list.reverse();
 }
 Bid.save_bid_style=function(activity_name){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var lastbid= _.last(_.findWhere(activity_list,{name:activity_name}).bidlist);
     lastbid.bidstyle='bided';
-    localStorage.setItem('activitylist',JSON.stringify(activity_list));
+    Activity.storage_activity_local()
 }
 Bid.save_current_activity=function(activity_name){
     localStorage.setItem('current_activity',activity_name);
@@ -62,7 +62,7 @@ Bid.get_current_activity=function(){
     return localStorage.getItem('current_activity');
 }
 Bid.save_current_bid=function(activity_name){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var bid_list=_.findWhere(activity_list,{name:activity_name}).bidlist;
     var bid= _.last(bid_list).bidname
     localStorage.setItem('current_bid',bid)
@@ -71,7 +71,7 @@ Bid.get_current_bid=function(){
     return localStorage.getItem('current_bid');
 }
 Bid.get_bid_messages=function(activity_name,bid_name){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var bid_list=_.findWhere(activity_list,{name:activity_name}).bidlist;
     var bid_messages= _.findWhere(bid_list,{bidname:bid_name}).bidapplylist;
     return Bid.add_apply_name_into_bid_message(activity_list,bid_messages,activity_name);
@@ -86,18 +86,15 @@ Bid.add_apply_name_into_bid_message=function(activity_list,bid_messages,activity
     return bid_messages;
 }
 Bid.judge_bid = function(){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'))
+    var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
     var bid_list= _.findWhere(activity_list,{name:current_activity}).bidlist;
-    console.log(bid_list)
     var bid_message = _.findWhere(bid_list,{bidname:current_bid})
-    console.log('----==++')
-    console.log(bid_message)
     return bid_message.length == 0
 }
 Bid.show_message = function(activity_name,bid_name){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var bid_list=_.findWhere(activity_list,{name:activity_name}).bidlist;
     var bid_messages = _.findWhere(bid_list,{bidname:bid_name}).bidapplylist
     _.findWhere(activity,{})
@@ -113,7 +110,7 @@ Bid.add_messages_bid = function(activity_list,bid_messages,activity_name){
     return bid_element.id
 }
 Bid.is_bided=function(bid_name){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist')),
+    var activity_list = Activity.get_activity_local()
         current_activity=Bid.get_current_activity(),
         bid_list=_.findWhere(activity_list,{name:current_activity}).bidlist,
         bid_info= _.findWhere(bid_list,{bidname:bid_name});
@@ -122,19 +119,19 @@ Bid.is_bided=function(bid_name){
     return false;
 }
 Bid.is_biding=function(){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     if(_.findWhere(activity_list,{bidstatus:'bidstart'}))
         return true;
     return false;
 }
 Bid.bid_show_messages = function(){
-    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
     return bid_name
 }
 Bid.bid_show_messages1 = function(){
-    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid = Bid.get_current_bid();
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
@@ -142,8 +139,7 @@ Bid.bid_show_messages1 = function(){
     return current_bid_name
 }
 Bid.bid_show_messages2 = function(activity_name,bid_name){
-    console.log(bid_name)
-    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
@@ -154,23 +150,20 @@ Bid.bid_show_messages2 = function(activity_name,bid_name){
             var messages = {phone:applytip.phone,bider:applytip.applyname,price: bid_applylist.price,color: 'false'}
             var bid_app_message = _.findWhere(bid_name,{bidname: current_bid}).bidapp
             bid_app_message.push(messages)
-            localStorage.setItem('activitylist',JSON.stringify(activity_list))
+            Activity.storage_activity_local()
         }
     })})
 }
 Bid.bid_show_messages3 = function(){
-    var activity_list = JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
     var current_name = Bid.get_current_bid()
     var bid_app_message = _.findWhere(bid_name,{bidname: current_name}).bidapp
     return bid_app_message
 }
-Bid.jj_color = function(){
-
-}
 Bid.get_bid_show = function(activity_name,bid_name){
-    var activity_list = JSON.parse(localStorage.getItem(('activitylist')))
+    var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
@@ -182,48 +175,34 @@ Bid.get_bid_show = function(activity_name,bid_name){
     return price_count
 }
 Bid.get_bid_show1 = function(activity_name,bid_name){
-    var activity_list = JSON.parse(localStorage.getItem(('activitylist')))
+    var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
     var bid_app_message = _.findWhere(bid_name,{bidname: current_bid}).bidapp
-//    var h = _.last(g).bider
-    console.log(_.findWhere(bid_name,{bidname: current_bid}))
     var app_bider = _.first(bid_app_message).bider
     return app_bider
 }
 Bid.get_bid_show2 = function(activity_name,bid_name){
-    var activity_list = JSON.parse(localStorage.getItem(('activitylist')))
+    var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
     var bid_app_message = _.findWhere(bid_name,{bidname: current_bid}).bidapp
-//    var h = _.last(g).phone
     var app_phone = _.first(bid_app_message).phone
     return app_phone
 }
 Bid.get_bid_show3 = function(activity_name,bid_name){
-    var activity_list = JSON.parse(localStorage.getItem(('activitylist')))
+    var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
     var bid_app_message = _.findWhere(bid_name,{bidname: current_bid}).bidapp
-//    var h = _.last(g).price
     var app_price = _.first(bid_app_message).price
     return app_price
 }
-//Bid.compare_price = function(activity_name,bid_name){
-//    var action = JSON.parse(localStorage.getItem('activitylist'))
-//    var current_activity=Bid.get_current_activity();
-//    var current_bid=Bid.get_current_bid()
-//    var active = _.findWhere(action,{name: current_activity}).bid_list
-//    var activity = _.findWhere(active,{bidname:current_bid}).bidapp
-//    if(activity[0].price < activity[1].price){
-//
-//    }
-//}
 Bid.compare_price = function(activity_name,bid_name){
-    var action = JSON.parse(localStorage.getItem('activitylist'))
+    var action = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
     var active = _.findWhere(action,{name: current_activity}).bidlist
@@ -233,10 +212,8 @@ Bid.compare_price = function(activity_name,bid_name){
     })
 }
 Bid.bid_jj_message = function(){
-    var active =JSON.parse(localStorage.getItem('activitylist'))
+    var active = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
-    console.log(current_activity)
-    console.log(active)
     var current_bid=Bid.get_current_bid()
     var action = _.findWhere(active,{name:current_activity}).bidlist
     var activity = _.findWhere(action,{bidname:current_bid}).bidapp

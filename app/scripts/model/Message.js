@@ -9,13 +9,13 @@ Message.delete_space=function(message){
 }
 
 Message.check_apply_status=function(){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     if(_.find(activity_list,function(activity){return activity.applystatus=='applystart'}))
         return true;
     return false;
 }
 Message.check_apply_repeat=function(message){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var apply_list = _.findWhere(activity_list,{applystatus:'applystart'}).applylist;
     if(_.find(apply_list,function(apply){return apply.phone==message.messages[0].phone}))
         return true;
@@ -23,12 +23,13 @@ Message.check_apply_repeat=function(message){
 }
 
 Message.add_apply_message=function(message){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var apply_name=Message.delete_space(message).substr(2).trim();
     var apply_phone=message.messages[0].phone;
     var apply_model={'applyname':apply_name,'phone':apply_phone};
     _.findWhere(activity_list,{applystatus:'applystart'}).applylist.push(apply_model);
-    localStorage.setItem('activitylist',JSON.stringify(activity_list));
+//    localStorage.setItem('activitylist',JSON.stringify(activity_list));
+    Activity.storage_activity_local()
     Message.refresh_apply_list();
 }
 
@@ -40,27 +41,27 @@ Message.refresh_apply_list=function(){
     });
 }
 Message.check_apply_detail_status=function(){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     if(_.find(activity_list,function(activity){return activity.applylist.length==0}))
         return true;
     return false;
 }
 Message.check_bid_status=function(){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     if(_.find(activity_list,function(activity){return activity.bidstatus=='bidstart'}))
         return true;
     return false;
 
 }
 Message.check_bid_detail_status=function(){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist'));
+    var activity_list = Activity.get_activity_local()
     var current_activity=localStorage.getItem('current_activity');
     if(_.findWhere(activity_list,{name:current_activity}).bidlist.length==0)
         return true;
     return false;
 }
 Message.check_bid_is_in_apply=function(message){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist')),
+    var activity_list = Activity.get_activity_local()
         current_activity=localStorage.getItem('current_activity'),
         bid_phone=message.messages[0].phone,
         apply_list=_.findWhere(activity_list,{name:current_activity}).applylist;
@@ -69,7 +70,7 @@ Message.check_bid_is_in_apply=function(message){
     return false;
 }
 Message.is_repeat_bid=function(message){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist')),
+    var activity_list = Activity.get_activity_local()
         current_activity=localStorage.getItem('current_activity'),
         bid_phone=message.messages[0].phone,
         bid_list=_.findWhere(activity_list,{name:current_activity}).bidlist,
@@ -79,13 +80,14 @@ Message.is_repeat_bid=function(message){
     return false;
 }
 Message.add_bid_message=function(message){
-    var activity_list=JSON.parse(localStorage.getItem('activitylist')),
+    var activity_list = Activity.get_activity_local()
         current_activity=localStorage.getItem('current_activity'),
         bid_price=Message.delete_space(message).substr(2).trim(),
         bid_phone=message.messages[0].phone,
         bid_list=_.findWhere(activity_list,{name:current_activity}).bidlist;
     _.last(bid_list).bidapplylist.push({id:_.last(bid_list).bidapplylist.length+1,price:bid_price,phone:bid_phone});
-    localStorage.setItem('activitylist',JSON.stringify(activity_list));
+//    localStorage.setItem('activitylist',JSON.stringify(activity_list));
+    Activity.storage_activity_local()
     Message.refresh__bid_list();
 }
 Message.refresh__bid_list=function(){
