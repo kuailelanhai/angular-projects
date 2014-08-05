@@ -222,7 +222,7 @@ Bid.compare_price = function(activity_name,bid_name){
     var action = JSON.parse(localStorage.getItem('activitylist'))
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
-    var active = _.findWhere(action,{name: current_activity}).bid_list
+    var active = _.findWhere(action,{name: current_activity}).bidlist
     var activity = _.findWhere(active,{bidname:current_bid}).bidapp
     activity = _.sortBy(activity,function(num){
         return num.price
@@ -231,10 +231,10 @@ Bid.compare_price = function(activity_name,bid_name){
 Bid.bid_jj_message = function(){
     var active =JSON.parse(localStorage.getItem('activitylist'))
     var current_activity=Bid.get_current_activity();
+    console.log(current_activity)
+    console.log(active)
     var current_bid=Bid.get_current_bid()
-    var action = _.findWhere(active,{name:current_activity}).bid_list
-    console.log(action)
-    console.log('0000')
+    var action = _.findWhere(active,{name:current_activity}).bidlist
     var activity = _.findWhere(action,{bidname:current_bid}).bidapp
     var count = _.countBy(activity,function(activity){
         return activity.price
@@ -242,5 +242,6 @@ Bid.bid_jj_message = function(){
     var num = _.map(count,function(value,key){
         return{"price":key,"count":value}
     })
-    $scope.biddings = num
+    return num
+//    $scope.biddings = num
 }

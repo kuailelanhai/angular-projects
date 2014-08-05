@@ -1,10 +1,10 @@
 /**
  * Created by guorui on 14-8-1.
  */
-function bid_result_page_load() {
-    var current_activity = Bid.get_current_activity();
-    $('#goback').attr('href', '#/bidlist/' + current_activity);
-}
+//function bid_result_page_load() {
+//    var current_activity = Bid.get_current_activity();
+//    $('#goback').attr('href', '/#/bidlist/' + current_activity);
+//}
 angular.module('partyBidApp')
     .controller('BidResultCtrl',function ($scope,$routeParams,$location,$timeout) {
         $scope.activity_name=$routeParams.activity_name;
