@@ -130,7 +130,7 @@ Bid.bid_show_messages = function(){
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
     return bid_name
 }
-Bid.bid_show_messages1 = function(){
+Bid.bid_show_messages_current_bid_name = function(){
     var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid = Bid.get_current_bid();
@@ -138,7 +138,7 @@ Bid.bid_show_messages1 = function(){
     var current_bid_name = _.findWhere(bid_name,{bidname:current_bid})
     return current_bid_name
 }
-Bid.bid_show_messages2 = function(activity_name,bid_name){
+Bid.bid_show_messages_bid_app = function(activity_name,bid_name){
     var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
@@ -154,7 +154,7 @@ Bid.bid_show_messages2 = function(activity_name,bid_name){
         }
     })})
 }
-Bid.bid_show_messages3 = function(){
+Bid.bid_show_messages_bidapp = function(){
     var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var bid_name = _.findWhere(activity_list,{name:current_activity}).bidlist;
@@ -174,7 +174,7 @@ Bid.get_bid_show = function(activity_name,bid_name){
     })
     return price_count
 }
-Bid.get_bid_show1 = function(activity_name,bid_name){
+Bid.get_bid_show_bider = function(activity_name,bid_name){
     var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
@@ -183,7 +183,7 @@ Bid.get_bid_show1 = function(activity_name,bid_name){
     var app_bider = _.first(bid_app_message).bider
     return app_bider
 }
-Bid.get_bid_show2 = function(activity_name,bid_name){
+Bid.get_bid_show_phone = function(activity_name,bid_name){
     var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
@@ -192,7 +192,7 @@ Bid.get_bid_show2 = function(activity_name,bid_name){
     var app_phone = _.first(bid_app_message).phone
     return app_phone
 }
-Bid.get_bid_show3 = function(activity_name,bid_name){
+Bid.get_bid_show_price = function(activity_name,bid_name){
     var activity_list = Activity.get_activity_local()
     var current_activity=Bid.get_current_activity();
     var current_bid=Bid.get_current_bid()
